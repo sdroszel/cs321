@@ -1,7 +1,7 @@
 package cs.project;
 
 /**
- * The cs321.Petition class represents a data structure for storing data for a petition.
+ * The Petition class represents a data structure for storing data for a petition.
  *
  * @author Scott Roszel
  */

@@ -11,13 +11,13 @@ import java.util.List;
  * @author Scott Roszel
  */
 public class Database {
-    private static ArrayList<Petition> database;
+    private final ArrayList<Petition> petitionDatabase;
 
     /**
      * Default constructor
      */
     public Database() {
-        database = new ArrayList<Petition>();
+        petitionDatabase = new ArrayList<>();
     }
 
     /**
@@ -25,18 +25,8 @@ public class Database {
      *
      * @param petition petition to add
      */
-    public boolean addToDatabase(Petition petition) {
-        return database.add(petition);
-    }
-
-    /**
-     * This function removes a petition from the database
-     *
-     * @param petition petition to remove
-     * @return returns true if removed
-     */
-    public boolean removeFromDatabase(Petition petition) {
-        return database.remove(petition);
+    public void addToDatabase(Petition petition) {
+        petitionDatabase.add(petition);
     }
 
     /**
@@ -45,6 +35,6 @@ public class Database {
      * @return the database arrayList
      */
     public List<Petition> getDatabase() {
-        return database;
+        return petitionDatabase;
     }
 }

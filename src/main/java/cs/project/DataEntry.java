@@ -1,7 +1,7 @@
 package cs.project;
 
 /**
- * The cs321.DataEntry class is responsible for checking the database for existing workers and entering petition data for
+ * The DataEntry class is responsible for checking the database for existing workers and entering petition data for
  * new non-immigrant workers.
  *
  * @author Scott Roszel
