@@ -26,8 +26,8 @@ public Petition getNextFromWF(Petition current_petition){
 	
      
 	if(current_petition != null){
-      	     
-		if (pnw_obj.validateEntry(current_petition)) {
+
+		if (pnw_obj.validateEntry(current_petition).isEmpty()) {
 			
 				
 		    editYear(current_petition);
@@ -35,14 +35,14 @@ public Petition getNextFromWF(Petition current_petition){
 		    editDay(current_petition);
 			
 			editMonth(current_petition);
-		
+
 	    }
 		
 		}
-		
+
 		
 		editWorkflowStatus(current_petition);	
-		
+
 		
 		return current_petition;
 		

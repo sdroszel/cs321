@@ -8,22 +8,11 @@ package cs.project;
  */
 public class DataEntry {
     private Petition newPetition;
-    private PNW pnw;
 
     /**
      * Default constructor
      */
     public DataEntry() {
-        newPetition = new Petition();
-    }
-
-    /**
-     * Constructor that accepts a cs321.PNW business object
-     *
-     * @param pnw holds the main business object
-     */
-    public DataEntry(PNW pnw) {
-        this.pnw = pnw;
         newPetition = new Petition();
     }
 
@@ -129,26 +118,6 @@ public class DataEntry {
 
     public Petition getPetition() {
         return this.newPetition;
-    }
-
-    /**
-     * The function checks if A-Number already exists
-     *
-     * @param aNumber holds the A-Number
-     * @return true if A-Number exists, false if not found
-     */
-    public boolean checkStatus(String aNumber) {
-        return pnw.checkDatabase(aNumber);
-    }
-
-    /**
-     * The function attempts to validate the petition data
-     *
-     * @param petition Holds the petition to validate
-     * @return returns the results of the validation
-     */
-    public boolean submitPetition(Petition petition) {
-        return pnw.validateEntry(petition);
     }
 
     /**

@@ -13,7 +13,6 @@ public class PNW {
     private final Workflow workflow;
     private final Database database;
     private final List<Petition> databaseList;
-    private boolean validateReturn;
 
     /**
      * Default constructor
@@ -51,23 +50,99 @@ public class PNW {
      * @param petition holds the petition that needs validated
      * @return returns true if petition passes validation
      */
-    public Boolean validateEntry(Petition petition) {
+    public String validateEntry(Petition petition) {
 
-        // check if entries are valid
-        validateReturn = isNotEmptyOrNull(petition.getPetitionerFirstName())
-                && isNotEmptyOrNull(petition.getPetitionerLastName())
-                && isNotEmptyOrNull(petition.getaNumber())
-                && isNotEmptyOrNull(petition.getBeneficiaryFirstName())
-                && isNotEmptyOrNull(petition.getBeneficiaryLastName())
-                && isDobInRange(Integer.parseInt(petition.getDobYear()), Integer.parseInt(petition.getDobMonth()), Integer.parseInt(petition.getDobDay()));
+        String textFields = checkIfStringsNullOrEmpty(petition);
+        if (textFields != null) return textFields;
+
+        String inputStrings = checkIfStringsContainNonAlphabetic(petition);
+        if (inputStrings != null) return inputStrings;
+
+        String aNumber = checkIfStringContainsOnlyDigits(petition);
+        if (aNumber != null) return aNumber;
+
 
         // if valid, add to database and workflow
-        if (validateReturn) {
-            database.addToDatabase(petition);
-            addToWorkflow(petition);
+        database.addToDatabase(petition);
+        addToWorkflow(petition);
+
+
+        return "";
+    }
+
+    private static String checkIfStringContainsOnlyDigits(Petition petition) {
+        char[] string;
+        string = petition.getaNumber().toCharArray();
+
+        for (char c : string) {
+            if (!Character.isDigit(c)) {
+                return "Invalid A-Number. Can only contain numbers.";
+            }
+        }
+        return null;
+    }
+
+    private static String checkIfStringsContainNonAlphabetic(Petition petition) {
+        char[] string;
+        string = petition.getPetitionerFirstName().toCharArray();
+
+        for (char c: string) {
+            if (!Character.isAlphabetic(c)) {
+                return "Invalid Petitioner First Name. Can only contain alphabetic characters.";
+            }
         }
 
-        return validateReturn;
+        string = petition.getPetitionerLastName().toCharArray();
+
+        for (char c: string) {
+            if (!Character.isAlphabetic(c)) {
+                return "Invalid Petitioner Last Name. Can only contain alphabetic characters.";
+            }
+        }
+
+        string = petition.getBeneficiaryFirstName().toCharArray();
+
+        for (char c: string) {
+            if (!Character.isAlphabetic(c)) {
+                return "Invalid Beneficiary First Name. Can only contain alphabetic characters.";
+            }
+        }
+
+        string = petition.getBeneficiaryLastName().toCharArray();
+
+        for (char c: string) {
+            if (!Character.isAlphabetic(c)) {
+                return "Invalid Beneficiary Last Name. Can only contain alphabetic characters.";
+            }
+        }
+        return null;
+    }
+
+    private String checkIfStringsNullOrEmpty(Petition petition) {
+        if (Boolean.FALSE.equals(isNotEmptyOrNull(petition.getPetitionerFirstName()))) {
+            return "Invalid Petitioner First Name";
+        }
+
+        if (Boolean.FALSE.equals(isNotEmptyOrNull(petition.getPetitionerLastName()))) {
+            return "Invalid Petitioner Last Name";
+        }
+
+        if (Boolean.FALSE.equals(isNotEmptyOrNull(petition.getaNumber()))) {
+            return "Invalid A-Number";
+        }
+
+        if (Boolean.FALSE.equals(isNotEmptyOrNull(petition.getBeneficiaryFirstName()))) {
+            return "Invalid Beneficiary First Name";
+        }
+
+        if (Boolean.FALSE.equals(isNotEmptyOrNull(petition.getBeneficiaryLastName()))) {
+            return "Invalid Beneficiary Last Name";
+        }
+
+        if (Boolean.FALSE.equals(isDobInRange(Integer.parseInt(petition.getDobYear()), Integer.parseInt(petition.getDobMonth()), Integer.parseInt(petition.getDobDay())))) {
+            return "Invalid Date of Birth";
+        }
+        return null;
     }
 
     /**
@@ -98,7 +173,6 @@ public class PNW {
      */
     public Boolean addToWorkflow(Petition petition) {
 
-        if (validateReturn) {
             if (petition.getWorkflowStatus() == 0) {
                 // add to review queue
                 workflow.addToReviewQueue(petition.getaNumber());
@@ -108,9 +182,6 @@ public class PNW {
                 workflow.addToApprovalQueue(petition.getaNumber());
                 return true;
             }
-        }
-
-
 
         return false;
     }

@@ -42,9 +42,9 @@ public class PNWTest {
         petition.setDobDay(16);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertTrue(result);
+        assertEquals("", result);
     }
 
     /**
@@ -64,9 +64,9 @@ public class PNWTest {
         petition.setDobDay(29);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     /**
@@ -86,9 +86,9 @@ public class PNWTest {
         petition.setDobDay(29);
         petition.setDobYear(2004);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertTrue(result);
+        assertEquals("", result);
     }
 
     /**
@@ -108,9 +108,9 @@ public class PNWTest {
         petition.setDobDay(16);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     /**
@@ -130,9 +130,9 @@ public class PNWTest {
         petition.setDobDay(16);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test
@@ -148,9 +148,9 @@ public class PNWTest {
         petition.setDobDay(40);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
 
     }
 
@@ -167,9 +167,9 @@ public class PNWTest {
         petition.setDobDay(40);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test
@@ -186,9 +186,9 @@ public class PNWTest {
         petition.setDobDay(23);
         petition.setDobYear(10000);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test
@@ -205,9 +205,9 @@ public class PNWTest {
         petition.setDobDay(23);
         petition.setDobYear(0);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test
@@ -224,9 +224,9 @@ public class PNWTest {
         petition.setDobDay(23);
         petition.setDobYear(-1800);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test
@@ -242,9 +242,9 @@ public class PNWTest {
         petition.setDobDay(23);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test
@@ -260,9 +260,9 @@ public class PNWTest {
         petition.setDobDay(-23);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
 
@@ -279,9 +279,9 @@ public class PNWTest {
         petition.setDobDay(23);
         petition.setDobYear(1989);
 
-        boolean result = pnw.validateEntry(petition);
+        String result = pnw.validateEntry(petition);
 
-        assertFalse(result);
+        assertEquals("", result);
     }
 
     @Test

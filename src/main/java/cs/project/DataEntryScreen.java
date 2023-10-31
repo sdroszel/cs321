@@ -4,10 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -23,7 +20,7 @@ public class DataEntryScreen extends Application {
 
     public static void main(String[] args) {
         businessObject = new PNW();
-        dataEntry = new DataEntry(businessObject);
+        dataEntry = new DataEntry();
 
         launch(args);
     }
@@ -72,21 +69,18 @@ public class DataEntryScreen extends Application {
            boolean result = businessObject.checkDatabase(aNumber.getText());
 
            if (aNumber.getText().isEmpty()) {
-               Alert alert = new Alert(Alert.AlertType.ERROR);
-               alert.setContentText("A-Number is empty");
+               Alert alert = new Alert(Alert.AlertType.NONE, "A-Number field is empty. Please enter a valid A-Number", ButtonType.OK);
                alert.show();
            }
            else if (result) {
-               Alert alert = new Alert(Alert.AlertType.INFORMATION);
-               alert.setContentText("A-Number already exists");
+               Alert alert = new Alert(Alert.AlertType.NONE, "A-Number already exists. Cannot process petition.", ButtonType.OK);
                alert.show();
                for (TextField textField : Arrays.asList(petitionerFirstName, petitionerLastName, aNumber, beneficiaryFirstName, beneficiaryLastName, dobDay, dobMonth, dobYear)) {
                    textField.clear();
                }
            }
            else {
-               Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-               alert.setContentText("A-Number not found");
+               Alert alert = new Alert(Alert.AlertType.NONE, "A-Number not found in database. Proceed to submit petition.", ButtonType.OK);
                alert.show();
                submitButton.setDisable(false);
            }
@@ -97,17 +91,16 @@ public class DataEntryScreen extends Application {
             dataEntry.setPetitionerLastName(petitionerLastName.getText());
             dataEntry.setANumber(aNumber.getText());
             dataEntry.setBeneficiaryFirstName(beneficiaryFirstName.getText());
-            dataEntry.setBeneficiaryLastName(petitionerLastName.getText());
+            dataEntry.setBeneficiaryLastName(beneficiaryLastName.getText());
             dataEntry.setDobDay(dobDay.getText());
             dataEntry.setDobMonth(dobMonth.getText());
             dataEntry.setDobYear(dobYear.getText());
 
-            boolean result = businessObject.validateEntry(dataEntry.getPetition());
+            String result = businessObject.validateEntry(dataEntry.getPetition());
 
             Alert alert;
-            if (result) {
-                alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Petition added to the database");
+            if (result.isEmpty()) {
+                alert = new Alert(Alert.AlertType.NONE, "Petition added to the database and workflow.", ButtonType.OK);
 
                 for (TextField textField : Arrays.asList(petitionerFirstName, petitionerLastName, aNumber, beneficiaryFirstName, beneficiaryLastName, dobDay, dobMonth, dobYear)) {
                     textField.clear();
@@ -117,8 +110,7 @@ public class DataEntryScreen extends Application {
                 submitButton.setDisable(true);
             }
             else {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Petition has an error");
+                alert = new Alert(Alert.AlertType.NONE, result, ButtonType.OK);
             }
             alert.show();
         });
