@@ -165,11 +165,15 @@ public class PNW {
      */
     public Petition getPetitionFromDatabase(String aNumber) {
 
+        Petition returnPetition;
+
         for (Petition petition:
                 databaseList) {
             if (petition.getaNumber().equals(aNumber)) {
+                returnPetition = petition;
+                databaseList.remove(petition);
                 // return petition with matching A-Number
-                return petition;
+                return returnPetition;
             }
         }
 
