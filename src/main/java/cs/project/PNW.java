@@ -52,6 +52,8 @@ public class PNW {
      */
     public String validateEntry(Petition petition) {
 
+        boolean checkDB = false;
+
         String textFields = checkIfStringsNullOrEmpty(petition);
         if (textFields != null) return textFields;
 
@@ -63,11 +65,21 @@ public class PNW {
 
 
         // if valid, add to database and workflow
-        database.addToDatabase(petition);
+        for (Petition p: databaseList) {
+            if (p.getaNumber().equals(petition.getaNumber())) {
+                checkDB = true;
+                break;
+            }
+        }
+
+        if (!checkDB) {
+            database.addToDatabase(petition);
+        }
+
         addToWorkflow(petition);
 
 
-        return "";
+        return null;
     }
 
     private static String checkIfStringContainsOnlyDigits(Petition petition) {

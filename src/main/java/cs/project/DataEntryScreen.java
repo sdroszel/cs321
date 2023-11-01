@@ -131,7 +131,7 @@ public class DataEntryScreen extends Application {
             Alert alert;
 
             // check if validation is valid
-            if (result.isEmpty()) {
+            if (result == null) {
                 alert = new Alert(Alert.AlertType.NONE, "Petition added to the database and workflow.", ButtonType.OK);
 
                 // clear text-fields
