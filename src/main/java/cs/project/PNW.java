@@ -63,6 +63,9 @@ public class PNW {
         String aNumber = checkIfStringContainsOnlyDigits(petition);
         if (aNumber != null) return aNumber;
 
+        String dobString = checkDob(petition);
+        if (dobString != null) return dobString;
+
 
         // if valid, add to database and workflow
         for (Petition p: databaseList) {
@@ -79,6 +82,13 @@ public class PNW {
         addToWorkflow(petition);
 
 
+        return null;
+    }
+
+    private String checkDob(Petition petition) {
+        if (Boolean.FALSE.equals(isDobInRange(Integer.parseInt(petition.getDobYear()), Integer.parseInt(petition.getDobMonth()), Integer.parseInt(petition.getDobDay())))) {
+            return "Invalid Date of Birth";
+        }
         return null;
     }
 
@@ -151,9 +161,6 @@ public class PNW {
             return "Invalid Beneficiary Last Name";
         }
 
-        if (Boolean.FALSE.equals(isDobInRange(Integer.parseInt(petition.getDobYear()), Integer.parseInt(petition.getDobMonth()), Integer.parseInt(petition.getDobDay())))) {
-            return "Invalid Date of Birth";
-        }
         return null;
     }
 
