@@ -4,46 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/0566719d7cd548655cf1dc2df0159e52dbf04061" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c4aa4459949082a90dd9ad15f2cec088b37ce94" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/1314d107277029ae986480daf601cd118170dc71" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b6013fee28b6983b75fa4e1fa17e96e7df99c86" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/6176814056a82a138d5baa28b471e2e513b957c6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80ec5934b4e015f76c4f51696458bb0e9a3a0eb4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89741c965ad61983730e00a90d064f4ee697c44a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cbf853fddf069fb8e6e7afac6f4196bc21b33797" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d68ff0e7ca19af2111f25e14aa1fccfdc423f53c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc3477c214b0446637d792a1191b6c1a13c7e437" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de13a2e173a199f96021fb829c49226b5d2d21d8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de9d51c882db1483be7087b8175dfe147452ee99" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/3/f39e702ae81206cdca822a8e8352a476f0667a3b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/5/0566719d7cd548655cf1dc2df0159e52dbf04061" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/c/0c4aa4459949082a90dd9ad15f2cec088b37ce94" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/3/1314d107277029ae986480daf601cd118170dc71" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/b/4b6013fee28b6983b75fa4e1fa17e96e7df99c86" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/1/6176814056a82a138d5baa28b471e2e513b957c6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/0/80ec5934b4e015f76c4f51696458bb0e9a3a0eb4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/9/89741c965ad61983730e00a90d064f4ee697c44a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/b/cbf853fddf069fb8e6e7afac6f4196bc21b33797" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/6/d68ff0e7ca19af2111f25e14aa1fccfdc423f53c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/c/dc3477c214b0446637d792a1191b6c1a13c7e437" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/e/de13a2e173a199f96021fb829c49226b5d2d21d8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/e/de9d51c882db1483be7087b8175dfe147452ee99" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/3/f39e702ae81206cdca822a8e8352a476f0667a3b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/MenuScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +116,28 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "state": "OPEN",
+      "assignee": "vlondon2",
+      "author": "vlondon2"
+    }
+  ],
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "vlondon2",
+    "author": "vlondon2"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="77f7ae3d-054c-4188-add4-140abb56dce1" />
+        <option name="url" value="https://github.com/sdroszel/cs321.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -324,7 +310,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "vic",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Owner/Downloads/cs321_2/cs321",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -391,6 +377,15 @@
       <workItem from="1698992868769" duration="139000" />
       <workItem from="1699049358518" duration="8503000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <option name="closed" value="true" />
+      <created>1699061727098</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699061727098</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -426,6 +421,11 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added title to menu screen" />
+    <MESSAGE value="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/WorkflowTest.java">

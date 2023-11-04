@@ -22,6 +22,7 @@ import javafx.stage.Stage;
  */
 public class ApprovalScreen extends Application {
 
+    private final SharedData sharedData;
     private PNW businessObject;
     private Approval approval;
     private Petition petition;
@@ -34,42 +35,31 @@ public class ApprovalScreen extends Application {
     public static void launchApp(ApprovalScreen as) {
 
     }
-
-    public ApprovalScreen() {
-        // Not used
-    }
     /**
      * Take petition with current data.
      *
-     * @param petition petition for immigrant worker.
+     * @param sd shared data among classes.
      */
-    public ApprovalScreen(Petition petition, PNW businessObject) {
-        this.petition = petition;
-        this.businessObject = businessObject;
+    public ApprovalScreen(SharedData sd) {
+        this.sharedData = sd;
         approval = new Approval();
     }
 
     @Override
     public void start(Stage stage) {
 
-        petition = new Petition();
-        petition.setANumber("1234");
-        petition.setPetitionerFirstName("Victor");
-        petition.setPetitionerLastName("Londono");
-        petition.setBeneficiaryFirstName("John");
-        petition.setBeneficiaryLastName("Doe");
-        petition.setDobMonth(10);
-        petition.setDobDay(31);
-        petition.setDobYear(1983);
+//        petition = new Petition();
+//        petition.setANumber("1234");
+//        petition.setPetitionerFirstName("Victor");
+//        petition.setPetitionerLastName("Londono");
+//        petition.setBeneficiaryFirstName("John");
+//        petition.setBeneficiaryLastName("Doe");
+//        petition.setDobMonth(10);
+//        petition.setDobDay(31);
+//        petition.setDobYear(1983);
 
-        businessObject = new PNW();
-
-
-
-        if (petition == null || businessObject == null) {
-            System.out.println("Petition or businessObject is null");
-            System.exit(0);
-        }
+        businessObject = sharedData.getBusinessObject();
+        petition = businessObject.getPetitionFromDatabase("0123");
 
         // window title
         stage.setTitle("Immigration Application");

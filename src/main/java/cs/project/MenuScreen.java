@@ -48,6 +48,12 @@ public class MenuScreen extends Application {
             dataEntryScreen.start(stage);
         });
 
+        approvalButton.setOnAction(event -> {
+            SharedData sd = SharedData.getInstance();
+            ApprovalScreen as = new ApprovalScreen(sd);
+            as.start(stage);
+        });
+
         HBox buttonBox = new HBox(10);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.getChildren().addAll(dataEntryButton, reviewButton, approvalButton);
