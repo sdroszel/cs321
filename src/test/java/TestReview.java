@@ -1,15 +1,7 @@
-
-
-import static org.junit.Assert.*;
-
 import cs.project.Petition;
 import cs.project.Review;
 import cs.project.Workflow;
-import org.junit.*;
-
-
-import java.util.Queue;
-
+import org.junit.Before;
 
 import java.util.Scanner;
 //import java.io;
