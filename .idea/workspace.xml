@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/0566719d7cd548655cf1dc2df0159e52dbf04061" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c4aa4459949082a90dd9ad15f2cec088b37ce94" beforeDir="false" />
@@ -41,7 +40,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/3/f39e702ae81206cdca822a8e8352a476f0667a3b" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
@@ -391,7 +389,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698983579208</updated>
       <workItem from="1698992868769" duration="139000" />
-      <workItem from="1699049358518" duration="8169000" />
+      <workItem from="1699049358518" duration="8503000" />
     </task>
     <servers />
   </component>
