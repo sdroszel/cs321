@@ -156,6 +156,10 @@ public class PNW {
         return databaseList.get(aNumber);
     }
 
+    public Workflow getWorkflow() {
+        return workflow;
+    }
+
     /**
      * This function adds the petition A-Number to the appropriate queue
      *

@@ -1,5 +1,4 @@
-package cs.project;
-
+package cs.project
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,27 +9,37 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 
 /**
  * This is the Review screen using JavaFX. It
- * allows a user to first Review their data and then re-validate all data
+ * allows a user to first Review their data,edit data and then re-validate all data
  * @author Rashida Mohamed
  */
 
 public class ReviewScreen extends Application {
 
-    private PNW businessObject;
+    
+	private final SharedData sharedData;
+	private final Queue<String> reviewQueue;
 	private Petition currentPetition;
-	private Petition petition1;
 	
 	private Stage primaryStage;
     private Scene firstScene;
     private Scene secondScene;
     private Scene thirdScene;
 	private Scene fourthScene;
+	private int total_fields = 0;
+	
+	//String that represents the aNumber
+	private String currentData = "";
+	
 	
 	
 	//Labels to indicate status for each field
@@ -39,11 +48,26 @@ public class ReviewScreen extends Application {
 	private Label StatusBFN = new Label();
 	private Label StatusBLN = new Label();
 	private Label StatusDOB = new Label();
+	
+	private MenuScreen menuScreen = new MenuScreen();
 		
+	private boolean StatusYear;
+	private boolean StatusMonth;
+	private boolean StatusDay;
+	
+	private String removedPetition = "";
 		
 	
 	
+	public ReviewScreen(SharedData sharedData){
+		
+		this.sharedData = sharedData;
+		this.reviewQueue = this.sharedData.getBusinessObject().getWorkflow().getReviewQueue();
+		this.currentPetition = new Petition();
+		
 	
+	
+	}
 	
     
 	
@@ -51,11 +75,7 @@ public class ReviewScreen extends Application {
      boolean result = true;
 	 
 	
-     
-	
-		
-		
-	
+ 
     private void switchToFirstScreen() {
         // Switch back to the first scene
         primaryStage.setScene(firstScene);
@@ -63,11 +83,10 @@ public class ReviewScreen extends Application {
     }
 	
 	
-	 private void switchToSecondScreen(PNW businessObject, Petition currentPetition) {
+	private void switchToSecondScreen(Petition currentPetition) {
 		 
 		 
         // Switch to the second scene
-		this.businessObject = businessObject;
 		this.currentPetition = currentPetition;
 		
 		// setup grid to hold labels and text-fields, secondScene is the Second screen that will appear to user
@@ -140,40 +159,39 @@ public class ReviewScreen extends Application {
 			
 		}
 		
+		//Button to edit and re-validate data
+		Button ER = new Button("Click here to edit and re-validate data");
 		
 		
-		//Button to revalidate data
-		Button revalidate = new Button("Click here to re-validate data");
 		
 		
-		
+	
 		
 		// revalidate data button click event
-        revalidate.setOnAction(event -> {
+        ER.setOnAction(event -> {
 			
-			switchToThirdScreen(this.businessObject,this.currentPetition);
+			switchToThirdScreen(this.currentPetition,0);
+			
 		});
 		
 		
 		// create horizontal box to hold buttons
         HBox buttonBox2 = new HBox(10);
-        buttonBox2.getChildren().addAll(revalidate);
+        buttonBox2.getChildren().addAll(ER);
         grid2.add(buttonBox2, 0, 7);
 		grid2.setBackground(Background.fill(Color.IVORY));
         secondScene = new Scene(grid2, 1200, 600);
 	
-	
-		
-		
         primaryStage.setScene(secondScene);
 		
+	   	
     }
-    
-    private void switchToThirdScreen(PNW businessObject, Petition currentPetition) {
+	
+    private void switchToThirdScreen(Petition currentPetition, int total_fields) {
         // Switch back to third scene
 		
 		 this.currentPetition = currentPetition;
-		 this.businessObject = businessObject;
+		 this.total_fields = total_fields;
 		 
 		//Buttons to confirm each data in third stage
         Button confirmFName = new Button("Click here to confirm Petitioner first name");
@@ -206,6 +224,16 @@ public class ReviewScreen extends Application {
         TextField dobYear = new TextField();
 		
 		
+		//set the text for each field
+		petitionerFirstName.setText(this.currentPetition.getPetitionerFirstName());
+		petitionerLastName.setText(this.currentPetition.getPetitionerLastName());
+		beneficiaryFirstName.setText(this.currentPetition.getBeneficiaryFirstName());
+		beneficiaryLastName.setText(this.currentPetition.getBeneficiaryLastName());
+		dobDay.setText(this.currentPetition.getDobDay());
+		dobMonth.setText(this.currentPetition.getDobMonth());
+		dobYear.setText(this.currentPetition.getDobYear());
+		
+		
 		
 		
 		
@@ -213,31 +241,31 @@ public class ReviewScreen extends Application {
 		// setup grid to hold labels and text-fields, first scene is the third screen that will appear to user
 	    GridPane grid3 = new GridPane();
 		//column and row
-		grid3.add(new Label("Re-enter Petitioner FirstName Name:"), 0, 0);
+		grid3.add(new Label("edit or re-enter Petitioner FirstName Name:"), 0, 0);
 		grid3.add(petitionerFirstName, 1, 0);
 		grid3.add(confirmFName,2,0);
 		grid3.add(this.StatusPFN,3,0);
-        grid3.add(new Label("Re-enter Petitioner LastName Name:"), 0, 1);
+        grid3.add(new Label("edit or re-enter Petitioner LastName Name:"), 0, 1);
         grid3.add(petitionerLastName, 1, 1);
 		grid3.add(confirmLName,2,1);
 		grid3.add(this.StatusPLN,3,1);
 		
         
-		grid3.add(new Label("Re-enter Beneficiary First Name:"), 0, 2);
+		grid3.add(new Label("edit or re-enter Beneficiary First Name:"), 0, 2);
         grid3.add(beneficiaryFirstName, 1, 2);
 		grid3.add(confirmBFName,2,2);
 		grid3.add(this.StatusBFN,3,2);
 		
         
 		
-		grid3.add(new Label("Re-enter Beneficiary Last Name:"), 0, 3);
+		grid3.add(new Label("edit or re-enter Beneficiary Last Name:"), 0, 3);
         grid3.add(beneficiaryLastName, 1, 3);
 		grid3.add(confirmBLName,2,3);
 		grid3.add(this.StatusBLN,3,3);
 		
 		
         
-		grid3.add(new Label("Re-enter Date of Birth (DD MM YYYY):"), 0, 4);
+		grid3.add(new Label("edit or re-enter Date of Birth (DD MM YYYY):"), 0, 4);
 		grid3.add(dobDay, 1, 4);
         grid3.add(dobMonth, 2,4 );
         grid3.add(dobYear, 3, 4);
@@ -252,37 +280,40 @@ public class ReviewScreen extends Application {
         thirdScene = new Scene(grid3, 1200, 600);
 		
 		
-		
-		
-		
 		// confirmFName button click event
         confirmFName.setOnAction(event -> {
 
          
 
             Alert alert2;
+			Alert alert3;
 
            
             if (petitionerFirstName.getText().isEmpty()) {
                alert2 = new Alert(Alert.AlertType.NONE, "Petitioner first name field is empty. Please enter name", ButtonType.OK);
 			    alert2.showAndWait();
-			
+				this.StatusPFN.setText("");
+			    
             }
           
-            else if (!(petitionerFirstName.getText().equals(this.currentPetition.getPetitionerFirstName()))){
+            else {
 				
+					
+			    if(checkIfStringsContainNonAlphabetic(petitionerFirstName.getText())){
+			     
+					this.currentPetition.setPetitionerFirstName(petitionerFirstName.getText());
+					this.total_fields = this.total_fields +1;
+					this.StatusPFN.setText("Data Verified");
 				
+				}
 				
-			    alert2 = new Alert(Alert.AlertType.NONE, "Petitioner first name does not match initial one entered. Please enter valid name", ButtonType.OK);
-				 // show alert and clear text field
-                 alert2.showAndWait();
-				 petitionerFirstName.clear();
-            }
-			
-			
-			else{
-				
-				this.StatusPFN.setText("Data Verified");
+				else{
+					
+					 alert3 = new Alert(Alert.AlertType.NONE, "Petitioner first name field contains a non alphabetic character", ButtonType.OK);
+					 petitionerFirstName.clear();
+			         alert3.showAndWait();
+					this.StatusPFN.setText("");
+				}
 			
 			}
 
@@ -303,29 +334,34 @@ public class ReviewScreen extends Application {
             if (petitionerLastName.getText().isEmpty()) {
                alert3 = new Alert(Alert.AlertType.NONE, "Petitioner last name field is empty. Please enter name", ButtonType.OK);
 			   alert3.showAndWait();
+			   this.StatusPLN.setText("");
 			   
             }
           
-            else if (!(petitionerLastName.getText().equals(this.currentPetition.getPetitionerLastName()))){
+            else {
+				     
+						 
+                if(checkIfStringsContainNonAlphabetic(petitionerLastName.getText())){
+					
+					this.currentPetition.setPetitionerLastName(petitionerLastName.getText());
+					this.total_fields = this.total_fields +1;
+					this.StatusPLN.setText("Data Verified");
 				
-				     alert3 = new Alert(Alert.AlertType.NONE, "Petitioner last name does not match one initial entered. Please enter valid name", ButtonType.OK);
-				     alert3.showAndWait();
-					 petitionerLastName.clear();
-					 
-            }
-			
-			
-			else{
 				
-				this.StatusPLN.setText("Data Verified");
+				}
+				
+				
+				else{
+					alert3 = new Alert(Alert.AlertType.NONE, "Petitioner last name contains non-alphabetic character", ButtonType.OK);
+				    alert3.showAndWait();
+					petitionerLastName.clear();
+					this.StatusPLN.setText("");
+				}
 				
 				
 			}
             
         });
-		
-		
-		
 		
 		
 		// confirmBFName button click event
@@ -337,22 +373,34 @@ public class ReviewScreen extends Application {
             if (beneficiaryFirstName.getText().isEmpty()) {
                alert4 = new Alert(Alert.AlertType.NONE, "Beneficiary first name field is empty. Please enter name", ButtonType.OK);
 			   alert4.showAndWait();
+			   this.StatusBFN.setText("");
 			   
             }
 			
            
-            else if (!(beneficiaryFirstName.getText().equals(this.currentPetition.getBeneficiaryFirstName()))){
+            else{
 				
-				     alert4 = new Alert(Alert.AlertType.NONE, "Beneficiary first name does not match one initial entered. Please enter valid name", ButtonType.OK);
+				    
+   		
+		        if(checkIfStringsContainNonAlphabetic(beneficiaryFirstName.getText())){
+				    
+
+					this.currentPetition.setBeneficiaryFirstName(petitionerLastName.getText());
+					this.total_fields = this.total_fields +1;
+					this.StatusBFN.setText("Data Verified");
+				
+				
+				}
+				
+				
+				else{
+					
+					 alert4 = new Alert(Alert.AlertType.NONE, "Beneficiary first name contains non-alphabetic character. Please enter valid name", ButtonType.OK);
 					 // show alert and clear text field
 			         alert4.showAndWait();
 					 beneficiaryFirstName.clear();	
-            }
-			
-			
-			else{
-				
-				this.StatusBFN.setText("Data Verified");
+					 this.StatusBFN.setText("");
+				}
 				
 				
 			}
@@ -371,32 +419,40 @@ public class ReviewScreen extends Application {
             if (beneficiaryLastName.getText().isEmpty()) {
                alert5 = new Alert(Alert.AlertType.NONE, "Beneficiary last name field is empty. Please enter name", ButtonType.OK);
 			    alert5.showAndWait();
+				this.StatusBLN.setText("");
 	             
             }
             
-            else if (!(beneficiaryLastName.getText().equals(this.currentPetition.getBeneficiaryLastName()))){
+            else {
 				
-				     alert5 = new Alert(Alert.AlertType.NONE, "Beneficiary last name does not match one initial entered. Please enter valid name", ButtonType.OK);
+				   
+	
+				if(checkIfStringsContainNonAlphabetic(beneficiaryLastName.getText())){
+					
+					this.currentPetition.setBeneficiaryLastName(beneficiaryLastName.getText());
+					this.total_fields = this.total_fields +1;
+					this.StatusBLN.setText("Data Verified");
+				
+				}
+				
+				
+				else{
+					
+					 alert5 = new Alert(Alert.AlertType.NONE, "Beneficiary last name contains non-alphabetic character. Please enter valid name", ButtonType.OK);
 					 // show alert and clear text field
 			         alert5.showAndWait();
 					 beneficiaryLastName.clear();
+					 this.StatusBLN.setText("");
 					 
-            }	
-			
-			
-			else{
-				
-				this.StatusBLN.setText("Data Verified");
+					 
+				}
 				
 				
 			}
 			
         });
-		
-		
-		
-		
-		
+	
+	
 		// confirmDob button click event
         confirmDob.setOnAction(event -> {
 			
@@ -406,6 +462,7 @@ public class ReviewScreen extends Application {
             if (dobDay.getText().isEmpty()) {
                alert6 = new Alert(Alert.AlertType.NONE, "day field is empty. Please enter day", ButtonType.OK);
 			    alert6.showAndWait();
+				this.StatusDay = false;
 	             
             }
 			
@@ -413,66 +470,147 @@ public class ReviewScreen extends Application {
 			// check if Month is empty
 			 if (dobMonth.getText().isEmpty()) {
                alert6 = new Alert(Alert.AlertType.NONE, "Month field is empty. Please enter Month", ButtonType.OK);
-			    alert6.showAndWait();
-	             
+			   alert6.showAndWait();
+	           this.StatusMonth = false;
             }
 			
 			
 			// check if Year is empty
 			 if (dobYear.getText().isEmpty()) {
                alert6 = new Alert(Alert.AlertType.NONE, "Year field is empty. Please enter year", ButtonType.OK);
-			    alert6.showAndWait();
+			   alert6.showAndWait();
+			   this.StatusYear = false;
 	             
             }
 			
 			
 			
-            
-            if (!(dobDay.getText().equals(this.currentPetition.getDobDay()))){
+            if(!(dobDay.getText().isEmpty())){
+            if (checkIfStringsContainsOnlyDigits(dobDay.getText())){
 				
-				    
-				     alert6 = new Alert(Alert.AlertType.NONE, "Day does not match initial one entered. Please enter the valid day", ButtonType.OK);
+				    if(this.sharedData.getBusinessObject().isDobInRange(2000,12,Integer.valueOf(dobDay.getText()))){
+					   this.currentPetition.setDobDay(Integer.valueOf(dobDay.getText()));
+				      
+					   this.StatusDay = true;
+				   
+					}
+					
+					else{
+						
+						alert6 = new Alert(Alert.AlertType.NONE, "Day field is out of range. Please enter the valid day", ButtonType.OK);
+					    // show alert and clear text field
+			            alert6.showAndWait();
+					    dobDay.clear();
+						this.StatusDay = false;
+					}
+					
+				   
+            }
+
+
+             else{
+                
+				
+				     alert6 = new Alert(Alert.AlertType.NONE, "Day contains a non numeric digit. Please enter the valid day", ButtonType.OK);
 					 // show alert and clear text field
 			         alert6.showAndWait();
 					 dobDay.clear();
+					 this.StatusDay = false;
 					 
-            }	
+
+			 }				 
+			
+			}
 			
 			
-			if(!(dobMonth.getText().equals(this.currentPetition.getDobMonth()))){
+			if(!(dobMonth.getText().isEmpty())){
+			
+			if(checkIfStringsContainsOnlyDigits(dobMonth.getText())){
+				if(this.sharedData.getBusinessObject().isDobInRange(2000,Integer.valueOf(dobMonth.getText()),1)){
+					   
+					   this.currentPetition.setDobMonth(Integer.valueOf(dobMonth.getText()));
+				       this.StatusMonth = true;
+				   
+					}
+					
+					else{
+						
+						alert6 = new Alert(Alert.AlertType.NONE, "Month field is out of range. Please enter the valid month", ButtonType.OK);
+					    // show alert and clear text field
+			            alert6.showAndWait();
+					    dobMonth.clear();
+						 this.StatusMonth = false;
+					
+						
+					}
+			 
+	 
+			}
+			
+			else{
 				
 				
-				alert6 = new Alert(Alert.AlertType.NONE, "Month does not match initial one entered. Please enter the valid month", ButtonType.OK);
+		        alert6 = new Alert(Alert.AlertType.NONE, "Month contains a non numeric character. Please enter the valid month", ButtonType.OK);
 			    // show alert and clear text field
 			    alert6.showAndWait();
 				dobMonth.clear();
+				 this.StatusMonth = false;
+			}
+			
+			}
+			
+			
+			if(!(dobYear.getText().isEmpty())){
+			if(checkIfStringsContainsOnlyDigits(dobYear.getText())){
+				
+			    if(this.sharedData.getBusinessObject().isDobInRange(Integer.valueOf(dobYear.getText()),12,1)){
+				       
+					   this.currentPetition.setDobYear(Integer.valueOf(dobYear.getText()));
+				       this.StatusYear = true;
+				        
+					}
+					
+					else{
+						
+						alert6 = new Alert(Alert.AlertType.NONE, "year field is out of range. Please enter the valid year", ButtonType.OK);
+					    // show alert and clear text field
+			            alert6.showAndWait();
+					    dobYear.clear();
+						 this.StatusYear = false;
+						 
+						
+					}
 					 
 			}
 			
 			
-			
-			
-			if(!(dobYear.getText().equals(this.currentPetition.getDobYear()))){
+			else{
 				
 				
-				alert6 = new Alert(Alert.AlertType.NONE, "Year does not match initial one entered. Please enter the valid year", ButtonType.OK);
+				alert6 = new Alert(Alert.AlertType.NONE, "Year contains non-numeric character. Please enter the valid year", ButtonType.OK);
 			    // show alert and clear text field
 			    alert6.showAndWait();
 				dobYear.clear();
+				this.StatusYear = false;
+			  
 				
-					 
 			}
 			
 			
+			}
 			
 			
-			if(dobDay.getText().equals(this.currentPetition.getDobDay()) && dobMonth.getText().equals(this.currentPetition.getDobMonth()) && dobYear.getText().equals(this.currentPetition.getDobYear())){
+			if(this.StatusDay == true && this.StatusMonth == true && this.StatusYear == true){
 				
-				
-			   this.StatusDOB.setText("Data Verified");
+			
+			    this.total_fields = this.total_fields +1;
+			    this.StatusDOB.setText("Data Verified");
+			        
 			 
 					 
 			}
+			
+		
 			
         });
 		
@@ -486,20 +624,21 @@ public class ReviewScreen extends Application {
 		   
 		   
 		   
-		  if(this.StatusPFN.getText().equals("Data verified") &&  this.StatusPLN.getText().equals("Data Verified") &&  this.StatusBFN.getText().equals("Data Verified") 
-		  && this.StatusBLN.getText().equals("Data Verified") &&  this.StatusDOB.getText().equals("Data Verified")){
+		  if(this.StatusPFN.getText().equals("Data Verified") && this.StatusPLN.getText().equals("Data Verified") && 
+		  this.StatusBFN.getText().equals("Data Verified") && this.StatusBLN.getText().equals("Data Verified") && 
+		  this.StatusDOB.getText().equals("Data Verified")){
 			  
 			  this.currentPetition.setWorkflowStatus(1);
-			  this.businessObject.addToWorkflow(this.currentPetition);
+			  this.sharedData.getBusinessObject().addToWorkflow(this.currentPetition);
 			  submitReview.setDisable(false);
-			   switchToFourthScreen();
+			  switchToFourthScreen();
 			  
 		  }
 		  
 		  else{
 			 	  
-			  alert7 = new Alert(Alert.AlertType.NONE, "One or more fields is invalid, please verify all fields", ButtonType.OK);
-		      submitReview.setDisable(false);
+			  alert7 = new Alert(Alert.AlertType.NONE, "One or more fields has not been verified, please verify all fields", ButtonType.OK);
+		      submitReview.setDisable(true);
 			  alert7.showAndWait();
 		 
 		    }
@@ -517,29 +656,112 @@ public class ReviewScreen extends Application {
         // Switch back to the fourth scene
 		
 		// setup grid to hold labels and text-fields, first scene is the fourth screen that will appear to user
-		
 		//the message that will appear upon successfully validating data entered
 		Label ReviewStatus = new Label("All data has now been verified, your petition will now be sent to approval");
+		Button startScreen = new Button("Click here to navigate back to data review menu screen");
 		
 	    GridPane grid4 = new GridPane();
 		
 		grid4.add(ReviewStatus,5,0);
+		grid4.add(startScreen,5,1);
 		grid4.setBackground(Background.fill(Color.IVORY));
 		fourthScene = new Scene(grid4,700,300);
 		
         primaryStage.setScene(fourthScene);
 		
 		
+		 startScreen.setOnAction(event -> {
+		
+			switchToFirstScreen();
+			
+		
+		});
+		
     }
+	
+	
+	
+	
+	 private void switchToFifthScreen() {
+        // Switch back to the fourth scene
+		
+		// setup grid to hold labels and text-fields, first scene is the fourth screen that will appear to user
+		
+		//the message that will appear upon successfully validating data entered
+		Label ReviewStatus = new Label("All items from work flow has been reviewed");
+		Button startScreen = new Button("Click here to navigate back to main menu screen");
+		
+	    GridPane grid4 = new GridPane();
+		
+		grid4.add(ReviewStatus,5,0);
+		grid4.add(startScreen,5,4);
+		grid4.setBackground(Background.fill(Color.IVORY));
+		fourthScene = new Scene(grid4,700,300);
+		
+        primaryStage.setScene(fourthScene);
+		
+		
+		 startScreen.setOnAction(event -> {
+		
+			
+            MenuScreen menuScreen = new MenuScreen();
+            menuScreen.start(primaryStage);
+        
+			
+		});
+		
+    }
+	
+	//returns true if string contains only alphabetic characters
+	private boolean checkIfStringsContainNonAlphabetic(String current_field){
+		char[] string;
+		string = current_field.toCharArray();
+        boolean isvalid = true;
+		
+        for (char c: string) {
+			
+            if (!Character.isAlphabetic(c)) {
+                 isvalid = false;
+				 break;
+            }
+        }
+		
+		
+		
+		
+		return isvalid;
+		
+	}
+	
+	
+	
+	//returns true if string contains only numeric characters
+	
+	private boolean checkIfStringsContainsOnlyDigits(String current_field){
+		char[] string;
+		string = current_field.toCharArray();
+        boolean isvalid = true;
+		
+        for (char c: string) {
+			
+            if (!Character.isDigit(c)) {
+                 isvalid = false;
+				 break;
+            }
+        }
+		
+	
+		return isvalid;
+		
+	}
+	
     
     /**
      * Main method to create new BO and petition objects
      * @param args default arguments
      */
     public static void main(String[] args) {
-        
-		
-		
+       
         //javafx.application.Application.
 		launch(args);
 		
@@ -551,113 +773,65 @@ public class ReviewScreen extends Application {
         // window title
 		this.primaryStage = primaryStage;
 		
-        this.primaryStage.setTitle("Review and re-validate Immigration Application");
+        this.primaryStage.setTitle("Review, edit, and re-validate Immigration Application");
 		
-	
-	
-		businessObject = new PNW();
-		
-		petition1 = new Petition();
-		
-		currentPetition = new Petition();
-		
-		
-		//The following is tester code to check if the GUI works for the data review portion
-	    //will be removed once the review GUI is merged with data entry and approval GUI
-		petition1.setBeneficiaryFirstName("John");
-        petition1.setBeneficiaryLastName("Doe");
-        petition1.setANumber("001");
-        petition1.setPetitionerFirstName("Jane");
-        petition1.setPetitionerLastName("Doe");
-        petition1.setDobMonth(5);
-        petition1.setDobDay(16);
-        petition1.setDobYear(1989);
-		
-		
-		businessObject.validateEntry(this.petition1);
-		
-		
-		
-		  
-		  
-		  String month = "";
-		  boolean result = true;
-		  Label dataverified = new Label("Data Verified");
-		  TextField aNumber = new TextField();
-		  String currentaN = aNumber.getText();
+	   
+
+		 String month = "";
+		 boolean result = true;
+		 Label dataverified = new Label("Data Verified");
+		 TextField aNumber = new TextField();
+		 String currentaN = aNumber.getText();
      
-		
-        
 		// setup grid to hold labels and text-fields, first scene is the first screen that will appear to user
         GridPane grid1 = new GridPane();
         grid1.setAlignment(Pos.BASELINE_CENTER);
         grid1.setHgap(10);
         grid1.setVgap(10);
         grid1.setPadding(new Insets(25, 25, 25, 25));
-		grid1.add(new Label("Enter your A-Number to review your current data:"), 0, 0);
-		grid1.add(aNumber, 0, 1);
 		
-		Button checkDatabaseButton = new Button("Check Database");
-		Button ReviewDataButton = new Button("Click here to review data");
-		
+		Button getNFworkflow = new Button("Click here to review next petition from work flow");
 		// create horizontal box to hold buttons
         HBox buttonBox = new HBox(10);
-        buttonBox.getChildren().addAll(checkDatabaseButton,ReviewDataButton);
+        buttonBox.getChildren().addAll(getNFworkflow);
         grid1.add(buttonBox, 2, 0);
 		grid1.setBackground(Background.fill(Color.IVORY));
         firstScene = new Scene(grid1, 700, 300);
         primaryStage.setScene(firstScene);
         primaryStage.show();
-		
-		   
-		
-        
 	
-        // checkDatabase button click event
-        checkDatabaseButton.setOnAction(event -> {
-
-            // variable to hold result of database check
-		  
-            boolean result1 = businessObject.checkDatabase(aNumber.getText());
+	
+		getNFworkflow.setOnAction(event -> {
 			
-
-            Alert alert1;
+		    
 			
-            // check if A-Number is empty
-            if (aNumber.getText().isEmpty()) {
-               alert1 = new Alert(Alert.AlertType.NONE, "A-Number field is empty. Please enter a valid A-Number", ButtonType.OK);
-			   ReviewDataButton.setDisable(true);
-			   alert1.showAndWait();
-			   
-            }
-            // check if A-Number exists in Database
-            else if(result1){
-				    
-				    currentPetition = businessObject.getPetitionFromDatabase(aNumber.getText());
-					ReviewDataButton.setDisable(false);
-					
-            }
 			
-            else {
+			if(this.reviewQueue.size() != 0){
 				
-                alert1 = new Alert(Alert.AlertType.NONE, "A-Number not found in database. Please enter a valid A-Number.", ButtonType.OK);
-                ReviewDataButton.setDisable(true);
-                alert1.showAndWait();
-				aNumber.clear();
-				
-            }
-
-           
-        });
 		
-		
-		
-		 // revalidate data button click event
-        ReviewDataButton.setOnAction(event -> {
+		       this.currentData = this.sharedData.getBusinessObject().getWorkflow().removeFromReviewQueue();
+			 
+			  
+			    //Allows user to review data if an item was removed from review queue
+			    this.currentPetition = this.sharedData.getBusinessObject().getPetitionFromDatabase(this.currentData);
+		        switchToSecondScreen(this.currentPetition);
+	       
 			
-			switchToSecondScreen(businessObject,currentPetition);
+			}
+			
+			
+			else if(this.reviewQueue.size() == 0){
+			
+			    switchToFifthScreen();
+				
+		    }
+			
 		});
 		
-		
     }
+	
+	
 }
+
+
+
