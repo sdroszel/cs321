@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/PNW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/PNW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/ReviewScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/ReviewScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/Workflow.java" afterDir="false" />
-    </list>
+    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -314,7 +306,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "vic2",
+    "git-widget-placeholder": "vic-approval",
     "last_opened_file_path": "C:/Users/Owner/Downloads/cs321_2/cs321",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -333,7 +325,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.DataEntryScreen">
     <configuration name="DataEntryScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs.project.DataEntryScreen" />
       <module name="cs321" />
@@ -426,6 +418,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added title to menu screen" />
