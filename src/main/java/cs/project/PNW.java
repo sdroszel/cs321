@@ -188,6 +188,10 @@ public class PNW {
         return null;
     }
 
+    public Workflow getWorkflow() {
+        return workflow;
+    }
+
     /**
      * This function adds the petition A-Number to the appropriate queue
      *
