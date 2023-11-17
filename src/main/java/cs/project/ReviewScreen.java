@@ -1,4 +1,5 @@
-package cs.project
+package cs.project;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,10 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Queue;
 
 
@@ -645,7 +643,8 @@ public class ReviewScreen extends Application {
 		    
 		   
 		});
-		
+
+
         primaryStage.setScene(thirdScene);
 	
 		

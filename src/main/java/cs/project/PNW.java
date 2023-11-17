@@ -234,7 +234,7 @@ public class PNW {
      * @param day holds day value
      * @return returns true if year, month and day are within range
      */
-    private Boolean isDobInRange(int year, int month, int day) {
+    public Boolean isDobInRange(int year, int month, int day) {
 
         if (year < 1920 || year > 2007 || month < 0 || month > 12) {
             // month or year out of range
