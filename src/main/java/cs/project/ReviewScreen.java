@@ -607,7 +607,16 @@ public class ReviewScreen extends Application {
 			 
 					 
 			}
+
+		       if(this.StatusDay == false || this.StatusMonth == false || this.StatusYear == false){
+				
 			
+			
+			    this.StatusDOB.setText("");
+			        
+			 
+					 
+			}
 		
 			
         });
@@ -627,7 +636,7 @@ public class ReviewScreen extends Application {
 		  this.StatusDOB.getText().equals("Data Verified")){
 			  
 			  this.currentPetition.setWorkflowStatus(1);
-			  this.sharedData.getBusinessObject().addToWorkflow(this.currentPetition);
+			  this.sharedData.getBusinessObject().validateEntry(this.currentPetition);
 			  submitReview.setDisable(false);
 			  switchToFourthScreen();
 			  
