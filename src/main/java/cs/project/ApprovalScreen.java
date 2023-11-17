@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -14,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Optional;
 
 
 /**
@@ -58,14 +60,22 @@ public class ApprovalScreen extends Application {
         // Create buttons
         Button acceptButton = new Button("Accept");
         acceptButton.setOnAction(e -> {
-            // Handle accept action
-            stage.close();
+
+            businessObject.removeFromApproval(petition.getaNumber());
+
+            TextInputDialog dialog = new TextInputDialog("Email");
+            dialog.setTitle("Confirmation");
+            dialog.setHeaderText("Petition has been submitted, enter email to receive confirmation.");
+            Optional<String> result = dialog.showAndWait();
+            petition = null;
+            start(stage);
         });
         acceptButton.setDisable(true);
 
         Button rejectButton = new Button("Reject");
         rejectButton.setOnAction(e -> {
             // Handle reject action
+            petition = null;
             stage.close();
         });
         rejectButton.setDisable(true);
@@ -77,8 +87,9 @@ public class ApprovalScreen extends Application {
             Alert alert;
 
             if (petition == null) {
-                alert = new Alert(Alert.AlertType.NONE, "No Petitions in Queue", ButtonType.OK);
-                alert.show();
+                alert = new Alert(Alert.AlertType.NONE, "No petition in queue.", ButtonType.OK);
+                alert.setTitle("Error");
+                alert.showAndWait();
             } else {
                 // Extract info from petition
                 String petFirstName = petition.getPetitionerFirstName();
