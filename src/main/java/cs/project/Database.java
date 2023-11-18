@@ -1,7 +1,6 @@
 package cs.project;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 /**
  * The cs321.Database class represents a simple database for storing/managing petitions
@@ -11,13 +10,13 @@ import java.util.List;
  * @author Scott Roszel
  */
 public class Database {
-    private final ArrayList<Petition> petitionDatabase;
+    private final HashMap<String, Petition> petitionDatabase;
 
     /**
      * Default constructor
      */
     public Database() {
-        petitionDatabase = new ArrayList<>();
+        petitionDatabase = new HashMap<>();
     }
 
     /**
@@ -26,7 +25,7 @@ public class Database {
      * @param petition petition to add
      */
     public void addToDatabase(Petition petition) {
-        petitionDatabase.add(petition);
+        petitionDatabase.put(petition.getaNumber(), petition);
     }
 
     /**
@@ -34,7 +33,7 @@ public class Database {
      *
      * @return the database arrayList
      */
-    public List<Petition> getDatabase() {
+    public HashMap<String, Petition> getDatabase() {
         return petitionDatabase;
     }
 }

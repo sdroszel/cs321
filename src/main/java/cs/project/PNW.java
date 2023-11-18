@@ -12,7 +12,7 @@ public class PNW {
 
     private final Workflow workflow;
     private final Database database;
-    private final List<Petition> databaseList;
+    private final HashMap<String, Petition> databaseList;
 
     /**
      * Default constructor
@@ -31,16 +31,7 @@ public class PNW {
      * @return true if found, false if not found
      */
     public Boolean checkDatabase(String aNumber) {
-
-        for (Petition petition:
-                databaseList) {
-            if (petition.getaNumber().equals(aNumber)) {
-                // if A-Number is found
-                return true;
-            }
-        }
-
-        return false;
+        return databaseList.containsKey(aNumber);
     }
 
     /**
@@ -51,8 +42,6 @@ public class PNW {
      * @return returns true if petition passes validation
      */
     public String validateEntry(Petition petition) {
-
-        boolean checkDB = false;
 
         String textFields = checkIfStringsNullOrEmpty(petition);
         if (textFields != null) return textFields;
@@ -68,14 +57,7 @@ public class PNW {
 
 
         // if valid, add to database and workflow
-        for (Petition p: databaseList) {
-            if (p.getaNumber().equals(petition.getaNumber())) {
-                checkDB = true;
-                break;
-            }
-        }
-
-        if (!checkDB) {
+        if (!checkDatabase(petition.getaNumber())) {
             database.addToDatabase(petition);
         }
 
@@ -171,21 +153,7 @@ public class PNW {
      * @return returns the petition with matching A-Number
      */
     public Petition getPetitionFromDatabase(String aNumber) {
-
-        Petition returnPetition;
-
-        for (Petition petition:
-                databaseList) {
-            if (petition.getaNumber().equals(aNumber)) {
-                returnPetition = petition;
-                databaseList.remove(petition);
-                // return petition with matching A-Number
-                return returnPetition;
-            }
-        }
-
-
-        return null;
+        return databaseList.get(aNumber);
     }
 
     public Workflow getWorkflow() {
@@ -200,17 +168,51 @@ public class PNW {
      */
     public Boolean addToWorkflow(Petition petition) {
 
-            if (petition.getWorkflowStatus() == 0) {
-                // add to review queue
-                workflow.addToReviewQueue(petition.getaNumber());
-                return true;
-            } else if (petition.getWorkflowStatus() == 1) {
-                // add to approval queue
-                workflow.addToApprovalQueue(petition.getaNumber());
-                return true;
-            }
+        // Temporarily bypassing logic to test approval screen
+
+//            if (petition.getWorkflowStatus() == 0) {
+//                // add to review queue
+//                workflow.addToReviewQueue(petition.getaNumber());
+//                return true;
+//            } else if (petition.getWorkflowStatus() == 1) {
+//                // add to approval queue
+//                workflow.addToApprovalQueue(petition.getaNumber());
+//                return true;
+//            }
+
+        // Temporary code until Review Screen is connected to Menu Screen
+        // Feel free to change it back once Review Screen is set up
+        workflow.addToReviewQueue(petition.getaNumber());
+        workflow.addToApprovalQueue(petition.getaNumber());
 
         return false;
+    }
+
+    /**
+     * Peeks at next petition in approval queue without removing it.
+     *
+     * @return the next petition from the queue, or null if none.
+     */
+    public Petition getNextFromApproval() {
+        String aNum = workflow.peekApprovalQueue();
+
+        if (aNum == null) {
+            return null;
+        }
+
+        return databaseList.get(aNum);
+    }
+
+    /**
+     * Removes petition from approval queue after verifying it's the
+     * correct one.
+     *
+     * @param aNum the A-Number of the petition to be removed.
+     */
+    public void removeFromApproval(String aNum) {
+        if (workflow.peekApprovalQueue().equals(aNum)) {
+            workflow.removeFromApprovalQueue();
+        }
     }
 
     /**
@@ -232,7 +234,7 @@ public class PNW {
      * @param day holds day value
      * @return returns true if year, month and day are within range
      */
-    private Boolean isDobInRange(int year, int month, int day) {
+    public Boolean isDobInRange(int year, int month, int day) {
 
         if (year < 1920 || year > 2007 || month < 0 || month > 12) {
             // month or year out of range
