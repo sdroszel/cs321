@@ -69,16 +69,6 @@ public class Workflow {
     }
 
     /**
-     * Returns the next petition from the approval queue without removing
-     * it from the queue.
-     *
-     * @return the next petition from Approval queue.
-     */
-    public String peekApprovalQueue() {
-        return approvalQueue.peek();
-    }
-
-    /**
      * used for workflow junit test
      *
      * @return returns review queue object
