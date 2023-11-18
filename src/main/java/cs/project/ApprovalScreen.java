@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,18 +25,14 @@ import javafx.stage.Stage;
 public class ApprovalScreen extends Application {
 
     private final SharedData sharedData;
-    private PNW businessObject;
-    private Approval approval;
-    private Petition petition;
+    private  Stage stage;
+    PNW businessObject;
+    Petition petition;
+
+    Workflow workflow;
 
 
-    public static void main(String[] args) {
-        launch();
-    }
 
-    public static void launchApp(ApprovalScreen as) {
-
-    }
     /**
      * Take petition with current data.
      *
@@ -42,24 +40,12 @@ public class ApprovalScreen extends Application {
      */
     public ApprovalScreen(SharedData sd) {
         this.sharedData = sd;
-        approval = new Approval();
+        businessObject = sharedData.getBusinessObject();
+        workflow = businessObject.getWorkflow();
     }
 
     @Override
     public void start(Stage stage) {
-
-//        petition = new Petition();
-//        petition.setANumber("1234");
-//        petition.setPetitionerFirstName("Victor");
-//        petition.setPetitionerLastName("Londono");
-//        petition.setBeneficiaryFirstName("John");
-//        petition.setBeneficiaryLastName("Doe");
-//        petition.setDobMonth(10);
-//        petition.setDobDay(31);
-//        petition.setDobYear(1983);
-
-        businessObject = sharedData.getBusinessObject();
-        petition = businessObject.getPetitionFromDatabase(businessObject.getWorkflow().removeFromApprovalQueue());
 
         // window title
         stage.setTitle("Immigration Application");
@@ -71,52 +57,93 @@ public class ApprovalScreen extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        // Extract info from petition
-        String petFirstName = petition.getPetitionerFirstName();
-        String petLastName = petition.getPetitionerLastName();
-        String aNumber = petition.getaNumber();
-        String benFirstName = petition.getBeneficiaryFirstName();
-        String benLastName = petition.getBeneficiaryLastName();
-
-        // Combine DOB
-        String dob = petition.getDobMonth() + "/" +
-                petition.getDobDay() + "/" +
-                petition.getDobYear();
-
-        // Create Text Objects
-        Text petFNText = new Text("Petitioner First Name: " + petFirstName);
-        Text petLNText = new Text("Petitioner Last Name: " + petLastName);
-        Text aNumText = new Text("A-Number: " + aNumber);
-        Text benFNText = new Text("Beneficiary First Name: " + benFirstName);
-        Text benLNText = new Text("Beneficiary Last Name: " + benLastName);
-        Text dobText = new Text("Date of Birth: " + dob);
-
-        // add labels and text-fields to the grid
-        grid.add(petFNText, 0, 0);
-        grid.add(petLNText, 0, 1);
-        grid.add(aNumText, 0, 2);
-        grid.add(benFNText, 0, 3);
-        grid.add(benLNText, 0, 4);
-        grid.add(dobText, 0, 5);
-
         // Create buttons
         Button acceptButton = new Button("Accept");
         acceptButton.setOnAction(e -> {
-            // Handle accept action
-            stage.close();
+            Alert alert;
+
+            alert = new Alert(Alert.AlertType.NONE, "Submission Successful. You will receive an email to the address associated with your account.", ButtonType.OK);
+            alert.setTitle("Accept");
+            alert.showAndWait();
+            start(stage);
         });
+        acceptButton.setDisable(true);
 
         Button rejectButton = new Button("Reject");
         rejectButton.setOnAction(e -> {
-            // Handle reject action
-            stage.close();
+
+            workflow.addToReviewQueue(petition.getaNumber());
+
+            Alert alert;
+
+            alert = new Alert(Alert.AlertType.NONE, "Petition has been sent back to Reviewer Queue", ButtonType.OK);
+            alert.setTitle("Reject");
+            alert.showAndWait();
+
+            start(stage);
+        });
+        rejectButton.setDisable(true);
+
+        Button getNextButton = new Button("Load Petition");
+        getNextButton.setOnAction(e -> {
+            petition = businessObject.getPetitionFromDatabase(workflow.removeFromApprovalQueue());
+
+            businessObject.getDatabase().add(petition);
+
+            Alert alert;
+
+            if (petition == null) {
+                alert = new Alert(Alert.AlertType.NONE, "No Petitions in Queue", ButtonType.OK);
+                alert.show();
+            } else {
+                // Extract info from petition
+                String petFirstName = petition.getPetitionerFirstName();
+                String petLastName = petition.getPetitionerLastName();
+                String aNumber = petition.getaNumber();
+                String benFirstName = petition.getBeneficiaryFirstName();
+                String benLastName = petition.getBeneficiaryLastName();
+
+                // Combine DOB
+                String dob = petition.getDobMonth() + "/" +
+                        petition.getDobDay() + "/" +
+                        petition.getDobYear();
+
+                // Create Text Objects
+                Text petFNText = new Text("Petitioner First Name: " + petFirstName);
+                Text petLNText = new Text("Petitioner Last Name: " + petLastName);
+                Text aNumText = new Text("A-Number: " + aNumber);
+                Text benFNText = new Text("Beneficiary First Name: " + benFirstName);
+                Text benLNText = new Text("Beneficiary Last Name: " + benLastName);
+                Text dobText = new Text("Date of Birth: " + dob);
+
+                // add labels and text-fields to the grid
+                grid.add(petFNText, 0, 0);
+                grid.add(petLNText, 0, 1);
+                grid.add(aNumText, 0, 2);
+                grid.add(benFNText, 0, 3);
+                grid.add(benLNText, 0, 4);
+                grid.add(dobText, 0, 5);
+
+                acceptButton.setDisable(false);
+                rejectButton.setDisable(false);
+                getNextButton.setDisable(true);
+
+            }
+
+
+        });
+
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> {
+            MenuScreen menuScreen = new MenuScreen();
+            menuScreen.start(stage);
         });
 
 
         // create horizontal box to hold buttons
-        HBox buttonBox = new HBox(10);
-        buttonBox.getChildren().addAll(acceptButton, rejectButton);
-        grid.add(buttonBox, 0, 6);
+        VBox buttonBox1 = new VBox(10);
+        buttonBox1.getChildren().addAll(getNextButton, acceptButton, rejectButton, backButton);
+        grid.add(buttonBox1, 0, 6);
 
         grid.setBackground(Background.fill(Color.IVORY));
 

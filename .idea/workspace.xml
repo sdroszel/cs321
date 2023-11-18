@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/PNW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/PNW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/Workflow.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,7 +112,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -326,7 +330,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.MenuScreen">
+  <component name="RunManager">
     <configuration name="DataEntryScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs.project.DataEntryScreen" />
       <module name="cs321" />
@@ -353,36 +357,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MenuScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cs.project.MenuScreen" />
-      <module name="cs321" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs.project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cs.project.Test" />
-      <module name="cs321" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs.project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MenuScreen" />
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.DataEntryScreen" />
         <item itemvalue="Application.HelloApplication" />
       </list>
@@ -401,6 +377,7 @@
       <updated>1698983579208</updated>
       <workItem from="1698992868769" duration="139000" />
       <workItem from="1699049358518" duration="8503000" />
+      <workItem from="1699915128058" duration="7221000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <option name="closed" value="true" />
@@ -447,6 +424,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added title to menu screen" />
     <MESSAGE value="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
@@ -456,19 +444,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cs/project/PNW.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cs/project/Test.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cs/project/DataEntryScreen.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/cs/project/ReviewScreen.java</url>
+          <line>647</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

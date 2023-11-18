@@ -31,10 +31,13 @@ public class PNW {
      * @return true if found, false if not found
      */
     public Boolean checkDatabase(String aNumber) {
+        if (databaseList.isEmpty()) {
+            return false;
+        }
 
         for (Petition petition:
                 databaseList) {
-            if (petition.getaNumber().equals(aNumber)) {
+            if (petition != null && petition.getaNumber().equals(aNumber)) {
                 // if A-Number is found
                 return true;
             }
@@ -190,6 +193,10 @@ public class PNW {
 
     public Workflow getWorkflow() {
         return workflow;
+    }
+
+    public List<Petition> getDatabase() {
+        return databaseList;
     }
 
     /**

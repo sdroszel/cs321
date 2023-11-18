@@ -50,9 +50,11 @@ public class Workflow {
      */
     public String removeFromReviewQueue() {
 
-        String aNumber = reviewQueue.peek();
-        reviewQueue.remove();
-        return aNumber;
+        try {
+            return reviewQueue.remove();
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     /**
@@ -63,9 +65,11 @@ public class Workflow {
      */
     public String removeFromApprovalQueue() {
 
-        String aNumber = approvalQueue.peek();
-        approvalQueue.remove();
-        return aNumber;
+        try {
+            return approvalQueue.remove();
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     /**
