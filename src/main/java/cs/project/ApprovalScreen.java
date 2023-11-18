@@ -59,7 +59,7 @@ public class ApprovalScreen extends Application {
 //        petition.setDobYear(1983);
 
         businessObject = sharedData.getBusinessObject();
-        petition = businessObject.getPetitionFromDatabase("0123");
+        petition = businessObject.getPetitionFromDatabase(businessObject.getWorkflow().removeFromApprovalQueue());
 
         // window title
         stage.setTitle("Immigration Application");

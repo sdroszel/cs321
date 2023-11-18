@@ -1,4 +1,5 @@
-package cs.project
+package cs.project;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,9 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-
-import java.util.Arrays;
 
 
 
@@ -24,11 +22,12 @@ import java.util.Arrays;
 
 public class ReviewScreen extends Application {
 
-    private PNW businessObject;
+	private final SharedData sharedData;
+	private PNW businessObject;
 	private Petition currentPetition;
 	private Petition petition1;
 	
-	private Stage primaryStage;
+	private Stage stage;
     private Scene firstScene;
     private Scene secondScene;
     private Scene thirdScene;
@@ -41,36 +40,146 @@ public class ReviewScreen extends Application {
 	private Label StatusBFN = new Label();
 	private Label StatusBLN = new Label();
 	private Label StatusDOB = new Label();
-		
-		
-	
-	
-	
-	
-    
-	
+
+
+	/**
+	 * Main method to create new BO and petition objects
+	 * @param args default arguments
+	 */
+	public static void main(String[] args) {
+
+		//javafx.application.Application.
+		launch(args);
+
+	}
+
+	public ReviewScreen(SharedData shared) {
+		this.sharedData = shared;
+	}
+
+	@Override
+	public void start(Stage primaryStage) {
+		businessObject = sharedData.getBusinessObject();
+		// window title
+		stage = primaryStage;
+
+		stage.setTitle("Review and re-validate Immigration Application");
+
+
+		String month = "";
+		boolean result = true;
+		Label dataverified = new Label("Data Verified");
+		TextField aNumber = new TextField();
+		String currentaN = aNumber.getText();
+
+
+
+		// setup grid to hold labels and text-fields, first scene is the first screen that will appear to user
+		GridPane grid1 = new GridPane();
+		grid1.setAlignment(Pos.BASELINE_CENTER);
+		grid1.setHgap(10);
+		grid1.setVgap(10);
+		grid1.setPadding(new Insets(25, 25, 25, 25));
+		//grid1.add(new Label("Enter your A-Number to review your current data:"), 0, 0);
+		//grid1.add(aNumber, 0, 1);
+
+		//Button checkDatabaseButton = new Button("Check Database");
+		//Button ReviewDataButton = new Button("Click here to review data");
+		Button getNextFromWorkflow = new Button("Get from workflow");
+		Button backButton = new Button("Back");
+
+
+
+
+
+		getNextFromWorkflow.setOnAction(event -> {
+			currentPetition = businessObject.getPetitionFromDatabase(businessObject.getWorkflow().removeFromReviewQueue());
+
+			if (businessObject.getWorkflow().getReviewQueue().isEmpty()) {
+				getNextFromWorkflow.setDisable(true);
+			}
+
+			switchToSecondScreen();
+		});
+
+		backButton.setOnAction(event -> {
+			MenuScreen menuScreen = new MenuScreen();
+			menuScreen.start(stage);
+		});
+/*
+		// checkDatabase button click event
+		checkDatabaseButton.setOnAction(event -> {
+
+			// variable to hold result of database check
+
+			boolean result1 = businessObject.checkDatabase(aNumber.getText());
+
+
+			Alert alert1;
+
+			// check if A-Number is empty
+			if (aNumber.getText().isEmpty()) {
+				alert1 = new Alert(Alert.AlertType.NONE, "A-Number field is empty. Please enter a valid A-Number", ButtonType.OK);
+				ReviewDataButton.setDisable(true);
+				alert1.showAndWait();
+
+			}
+			// check if A-Number exists in Database
+			else if(result1){
+
+				currentPetition = businessObject.getPetitionFromDatabase(aNumber.getText());
+				ReviewDataButton.setDisable(false);
+
+			}
+
+			else {
+
+				alert1 = new Alert(Alert.AlertType.NONE, "A-Number not found in database. Please enter a valid A-Number.", ButtonType.OK);
+				ReviewDataButton.setDisable(true);
+				alert1.showAndWait();
+				aNumber.clear();
+
+			}
+
+
+		});
+*/
+/*
+
+		// revalidate data button click event
+		ReviewDataButton.setOnAction(event -> {
+
+			switchToSecondScreen();
+		});
+
+ */
+// create horizontal box to hold buttons
+		HBox buttonBox = new HBox(10);
+		buttonBox.getChildren().addAll(getNextFromWorkflow, backButton);
+		grid1.add(buttonBox, 2, 0);
+		grid1.setBackground(Background.fill(Color.IVORY));
+
+		firstScene = new Scene(grid1, 700, 300);
+		stage.setScene(firstScene);
+		stage.show();
+	}
+
 	 String month = "";
      boolean result = true;
-	 
-	
-     
-	
-		
-		
 	
     private void switchToFirstScreen() {
         // Switch back to the first scene
-        primaryStage.setScene(firstScene);
+        stage.setScene(firstScene);
 		
     }
 	
 	
-	 private void switchToSecondScreen(PNW businessObject, Petition currentPetition) {
+	 private void switchToSecondScreen() {
 		 
 		 
         // Switch to the second scene
-		this.businessObject = businessObject;
-		this.currentPetition = currentPetition;
+		//this.businessObject = businessObject;
+		//this.currentPetition = currentPetition;
 		
 		// setup grid to hold labels and text-fields, secondScene is the Second screen that will appear to user
         GridPane grid2 = new GridPane();
@@ -153,7 +262,7 @@ public class ReviewScreen extends Application {
 		// revalidate data button click event
         revalidate.setOnAction(event -> {
 			
-			switchToThirdScreen(this.businessObject,this.currentPetition);
+			switchToThirdScreen();
 		});
 		
 		
@@ -167,15 +276,15 @@ public class ReviewScreen extends Application {
 	
 		
 		
-        primaryStage.setScene(secondScene);
+        stage.setScene(secondScene);
 		
     }
     
-    private void switchToThirdScreen(PNW businessObject, Petition currentPetition) {
+    private void switchToThirdScreen() {
         // Switch back to third scene
 		
-		 this.currentPetition = currentPetition;
-		 this.businessObject = businessObject;
+		 //this.currentPetition = currentPetition;
+		 //this.businessObject = businessObject;
 		 
 		//Buttons to confirm each data in third stage
         Button confirmFName = new Button("Click here to confirm Petitioner first name");
@@ -483,7 +592,7 @@ public class ReviewScreen extends Application {
 		
 		// submitReview button click event
 		submitReview.setOnAction(event -> {
-           
+           /*
 		   Alert alert7;
 		   
 		   
@@ -505,11 +614,14 @@ public class ReviewScreen extends Application {
 			  alert7.showAndWait();
 		 
 		    }
-		    
-		   
+		    */
+		   currentPetition.setWorkflowStatus(1);
+		   businessObject.validateEntry(currentPetition);
+
+		   stage.setScene(firstScene);
 		});
 		
-        primaryStage.setScene(thirdScene);
+        stage.setScene(thirdScene);
 	
 		
     }
@@ -529,136 +641,7 @@ public class ReviewScreen extends Application {
 		grid4.setBackground(Background.fill(Color.IVORY));
 		fourthScene = new Scene(grid4,700,300);
 		
-        primaryStage.setScene(fourthScene);
-		
-		
-    }
-    
-    /**
-     * Main method to create new BO and petition objects
-     * @param args default arguments
-     */
-    public static void main(String[] args) {
-        
-		
-		
-        //javafx.application.Application.
-		launch(args);
-		
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-	      
-        // window title
-		this.primaryStage = primaryStage;
-		
-        this.primaryStage.setTitle("Review and re-validate Immigration Application");
-		
-	
-	
-		businessObject = new PNW();
-		
-		petition1 = new Petition();
-		
-		currentPetition = new Petition();
-		
-		
-		//The following is tester code to check if the GUI works for the data review portion
-	    //will be removed once the review GUI is merged with data entry and approval GUI
-		petition1.setBeneficiaryFirstName("John");
-        petition1.setBeneficiaryLastName("Doe");
-        petition1.setANumber("001");
-        petition1.setPetitionerFirstName("Jane");
-        petition1.setPetitionerLastName("Doe");
-        petition1.setDobMonth(5);
-        petition1.setDobDay(16);
-        petition1.setDobYear(1989);
-		
-		
-		businessObject.validateEntry(this.petition1);
-		
-		
-		
-		  
-		  
-		  String month = "";
-		  boolean result = true;
-		  Label dataverified = new Label("Data Verified");
-		  TextField aNumber = new TextField();
-		  String currentaN = aNumber.getText();
-     
-		
-        
-		// setup grid to hold labels and text-fields, first scene is the first screen that will appear to user
-        GridPane grid1 = new GridPane();
-        grid1.setAlignment(Pos.BASELINE_CENTER);
-        grid1.setHgap(10);
-        grid1.setVgap(10);
-        grid1.setPadding(new Insets(25, 25, 25, 25));
-		grid1.add(new Label("Enter your A-Number to review your current data:"), 0, 0);
-		grid1.add(aNumber, 0, 1);
-		
-		Button checkDatabaseButton = new Button("Check Database");
-		Button ReviewDataButton = new Button("Click here to review data");
-		
-		// create horizontal box to hold buttons
-        HBox buttonBox = new HBox(10);
-        buttonBox.getChildren().addAll(checkDatabaseButton,ReviewDataButton);
-        grid1.add(buttonBox, 2, 0);
-		grid1.setBackground(Background.fill(Color.IVORY));
-        firstScene = new Scene(grid1, 700, 300);
-        primaryStage.setScene(firstScene);
-        primaryStage.show();
-		
-		   
-		
-        
-	
-        // checkDatabase button click event
-        checkDatabaseButton.setOnAction(event -> {
-
-            // variable to hold result of database check
-		  
-            boolean result1 = businessObject.checkDatabase(aNumber.getText());
-			
-
-            Alert alert1;
-			
-            // check if A-Number is empty
-            if (aNumber.getText().isEmpty()) {
-               alert1 = new Alert(Alert.AlertType.NONE, "A-Number field is empty. Please enter a valid A-Number", ButtonType.OK);
-			   ReviewDataButton.setDisable(true);
-			   alert1.showAndWait();
-			   
-            }
-            // check if A-Number exists in Database
-            else if(result1){
-				    
-				    currentPetition = businessObject.getPetitionFromDatabase(aNumber.getText());
-					ReviewDataButton.setDisable(false);
-					
-            }
-			
-            else {
-				
-                alert1 = new Alert(Alert.AlertType.NONE, "A-Number not found in database. Please enter a valid A-Number.", ButtonType.OK);
-                ReviewDataButton.setDisable(true);
-                alert1.showAndWait();
-				aNumber.clear();
-				
-            }
-
-           
-        });
-		
-		
-		
-		 // revalidate data button click event
-        ReviewDataButton.setOnAction(event -> {
-			
-			switchToSecondScreen(businessObject,currentPetition);
-		});
+        stage.setScene(fourthScene);
 		
 		
     }

@@ -48,6 +48,12 @@ public class MenuScreen extends Application {
             dataEntryScreen.start(stage);
         });
 
+        reviewButton.setOnAction(event -> {
+            SharedData sharedData = SharedData.getInstance();
+            ReviewScreen reviewScreen = new ReviewScreen(sharedData);
+            reviewScreen.start(stage);
+        });
+
         approvalButton.setOnAction(event -> {
             SharedData sd = SharedData.getInstance();
             ApprovalScreen as = new ApprovalScreen(sd);
