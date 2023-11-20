@@ -1,0 +1,14 @@
+
+—
+java:S1186#"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ë¹ğ
+s
+java:S1450"]Remove the "businessObject" field and declare it as a local variable in the relevant methods.(ôşã¥
+m
+java:S1450"WRemove the "petition" field and declare it as a local variable in the relevant methods.(Š†µÚ
+Q	java:S1253"<This block of commented-out lines of code should be removed.(Ó·şü
+B
+java:S1602h",Remove useless curly braces around statement(Ïøõ
+B
+java:S1602n",Remove useless curly braces around statement(Í†„¤
+B
+java:S1068",Remove this unused "approval" private field.(Åğ€Ï

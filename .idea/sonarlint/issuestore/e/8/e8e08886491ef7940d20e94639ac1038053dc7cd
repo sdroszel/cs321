@@ -1,0 +1,85 @@
+
+k
+java:S1192G"NDefine a constant instead of duplicating this literal "Data Verified" 6 times.(ê„ƒÉ8ó‡Øş½1
+m	java:S117¬"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àãˆ)8ó‡Øş½1
+m	java:S117­"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®§œ]8ó‡Øş½1
+n	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿä³Ê8ó‡Øş½1
+s	java:S117¯"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ¼ƒŠÿÿÿÿÿ8ó‡Øş½1
+s	java:S117°"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñùĞœÿÿÿÿÿ8ó‡Øş½1
+s	java:S117ü"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶•¬ùÿÿÿÿ8ó‡Øş½1
+p	java:S116&"TRename this field "StatusPFN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½«õÎ8ÕˆØş½1
+u	java:S116'"TRename this field "StatusPLN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïçÌşÿÿÿÿ8ÕˆØş½1
+p	java:S116("TRename this field "StatusBFN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºøÊ8ÕˆØş½1
+u	java:S116)"TRename this field "StatusBLN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼¦Œœıÿÿÿÿ8ÕˆØş½1
+u	java:S116*"TRename this field "StatusDOB" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÉ—êüÿÿÿÿ8ÕˆØş½1
+w
+java:S1450""ZRemove the "fourthScene" field and declare it as a local variable in the relevant methods.(ôÀö¶8ÖˆØş½1
+w
+java:S1450 "ZRemove the "secondScene" field and declare it as a local variable in the relevant methods.(Ã¶¦è8ÖˆØş½1
+v
+java:S1450!"YRemove the "thirdScene" field and declare it as a local variable in the relevant methods.(Œ­â·8ÖˆØş½1
+_
+java:S1854I"=Remove this useless assignment to local variable "currentaN".(· Ôªüÿÿÿÿ8ÙˆØş½1
+]
+java:S1854G"@Remove this useless assignment to local variable "dataverified".(ê„ƒÉ8ÙˆØş½1
+\
+java:S1117E":Rename "month" which hides the field declared at line 167.(ÒãÎ şÿÿÿÿ8ÙˆØş½1
+L
+java:S1481E"*Remove this unused "month" local variable.(ÒãÎ şÿÿÿÿ8ÙˆØş½1
+]
+java:S1117F";Rename "result" which hides the field declared at line 168.(¼ª÷ñÿÿÿÿÿ8ÙˆØş½1
+M
+java:S1481F"+Remove this unused "result" local variable.(¼ª÷ñÿÿÿÿÿ8ÙˆØş½1
+N
+java:S1481G"1Remove this unused "dataverified" local variable.(ê„ƒÉ8ÙˆØş½1
+P
+java:S1481I".Remove this unused "currentaN" local variable.(· Ôªüÿÿÿÿ8ÚˆØş½1
+X	java:S125S"<This block of commented-out lines of code should be removed.(ö— ¸8ÛˆØş½1
+X	java:S125V"<This block of commented-out lines of code should be removed.(Ïáû†8ÛˆØş½1
+X	java:S125o"<This block of commented-out lines of code should be removed.(ŒıØ™8ÜˆØş½1
+^	java:S125–"<This block of commented-out lines of code should be removed.(®Ó‚«úÿÿÿÿ8ÜˆØş½1
+p
+java:S3776±"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(òÿì¸8àˆØş½1
+Y	java:S125µ"<This block of commented-out lines of code should be removed.(¡•‰Á8àˆØş½1
+O
+java:S1602‡",Remove useless curly braces around statement(úÑÁ¶ÿÿÿÿÿ8âˆØş½1
+u
+java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 31 to the 15 allowed.(åâ„åûÿÿÿÿ8ãˆØş½1
+`
+java:S1854°"=Remove this useless assignment to local variable "StatusDOB".(ñùĞœÿÿÿÿÿ8ãˆØş½1
+`
+java:S1854¯"=Remove this useless assignment to local variable "StatusBLN".(ƒ¼ƒŠÿÿÿÿÿ8ãˆØş½1
+[
+java:S1854®"=Remove this useless assignment to local variable "StatusBFN".(Ÿä³Ê8ãˆØş½1
+Z
+java:S1854­"=Remove this useless assignment to local variable "StatusPLN".(®§œ]8ãˆØş½1
+Z
+java:S1854¬"=Remove this useless assignment to local variable "StatusPFN".(Àãˆ)8ãˆØş½1
+Y	java:S125"<This block of commented-out lines of code should be removed.(ÃÒÈõ8ãˆØş½1
+Z
+java:S1117¬"=Rename "StatusPFN" which hides the field declared at line 38.(Àãˆ)8äˆØş½1
+K
+java:S1481¬".Remove this unused "StatusPFN" local variable.(Àãˆ)8äˆØş½1
+Z
+java:S1117­"=Rename "StatusPLN" which hides the field declared at line 39.(®§œ]8äˆØş½1
+K
+java:S1481­".Remove this unused "StatusPLN" local variable.(®§œ]8äˆØş½1
+[
+java:S1117®"=Rename "StatusBFN" which hides the field declared at line 40.(Ÿä³Ê8äˆØş½1
+L
+java:S1481®".Remove this unused "StatusBFN" local variable.(Ÿä³Ê8äˆØş½1
+`
+java:S1117¯"=Rename "StatusBLN" which hides the field declared at line 41.(ƒ¼ƒŠÿÿÿÿÿ8äˆØş½1
+Q
+java:S1481¯".Remove this unused "StatusBLN" local variable.(ƒ¼ƒŠÿÿÿÿÿ8äˆØş½1
+`
+java:S1117°"=Rename "StatusDOB" which hides the field declared at line 42.(ñùĞœÿÿÿÿÿ8äˆØş½1
+Q
+java:S1481°".Remove this unused "StatusDOB" local variable.(ñùĞœÿÿÿÿÿ8äˆØş½1
+Y	java:S125Ô"<This block of commented-out lines of code should be removed.(€˜á8éˆØş½1
+I
+java:S1068"-Remove this unused "petition1" private field.(ÙÊ¡8êˆØş½1
+V
+java:S1144ª"8Remove this unused private "switchToFirstScreen" method.(áø“ä8êˆØş½1
+V
+java:S1144ö"9Remove this unused private "switchToFourthScreen" method.( íÔ:8êˆØş½1
