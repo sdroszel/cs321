@@ -177,8 +177,7 @@ public class PNW {
 
         Petition returnPetition;
 
-        for (Petition petition:
-                databaseList) {
+        for (Petition petition: databaseList) {
             if (petition.getaNumber().equals(aNumber)) {
                 returnPetition = petition;
                 databaseList.remove(petition);

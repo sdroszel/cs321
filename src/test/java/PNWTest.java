@@ -68,7 +68,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     /**
@@ -91,7 +91,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals(null, result);
     }
 
     /**
@@ -297,9 +297,9 @@ public class PNWTest {
         petition.setANumber("001");
         database.addToDatabase(petition);
 
-        boolean result = pnw.getPetitionFromDatabase("001").equals(petition);
+        Petition result = pnw.getPetitionFromDatabase("001");
 
-        assertTrue(result);
+        assertEquals(petition, result);
     }
     @Test
     public void testAddToWorkflowReturnResult() {
