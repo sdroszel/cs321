@@ -183,7 +183,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("Invalid Petitioner First Name", result);
+        assertEquals("Invalid Petitioner Last Name", result);
     }
 
     /**
