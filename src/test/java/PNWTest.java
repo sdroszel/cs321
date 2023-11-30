@@ -295,7 +295,7 @@ public class PNWTest {
         database = new Database();
 
         petition.setANumber("001");
-        database.addToDatabase(petition);
+        pnw.getDatabase().add(petition);
 
         Petition result = pnw.getPetitionFromDatabase("001");
 
