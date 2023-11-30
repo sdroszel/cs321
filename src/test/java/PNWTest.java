@@ -100,7 +100,7 @@ public class PNWTest {
      * @author Scott Roszel
      */
     @Test
-    public void testValidateEntryMissingName() {
+    public void testValidateEntryMissingBeneficiaryFirstName() {
         petition = new Petition();
 
         petition.setBeneficiaryFirstName("");
@@ -108,6 +108,75 @@ public class PNWTest {
         petition.setANumber("001");
         petition.setPetitionerFirstName("Jane");
         petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Beneficiary First Name", result);
+    }
+
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if a string entry is empty.
+     * @author Scott Roszel
+     */
+    @Test
+    public void testValidateEntryMissingBeneficiaryLastName() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Beneficiary First Name", result);
+    }
+
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if a string entry is empty.
+     * @author Scott Roszel
+     */
+    @Test
+    public void testValidateEntryMissingPetitionerFirstName() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Beneficiary First Name", result);
+    }
+
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if a string entry is empty.
+     * @author Scott Roszel
+     */
+    @Test
+    public void testValidateEntryMissingPetitionerLastName() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("");
         petition.setDobMonth(5);
         petition.setDobDay(16);
         petition.setDobYear(1989);
