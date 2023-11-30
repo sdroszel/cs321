@@ -137,7 +137,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("Invalid Beneficiary First Name", result);
+        assertEquals("Invalid Beneficiary Last Name", result);
     }
 
     /**
@@ -160,7 +160,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("Invalid Beneficiary First Name", result);
+        assertEquals("Invalid Petitioner First Name", result);
     }
 
     /**
@@ -183,7 +183,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("Invalid Beneficiary First Name", result);
+        assertEquals("Invalid Petitioner First Name", result);
     }
 
     /**
