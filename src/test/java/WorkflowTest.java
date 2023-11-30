@@ -29,6 +29,7 @@ public class WorkflowTest {
     /**
      *  This test stores the size before and after adding object to queue.
      *  Test fails if the new queue size does not equal the old queue size plus one.
+     *  @author Scott Roszel
      */
     @Test
     public void testAddToReviewQueueIncrement() {
@@ -48,6 +49,7 @@ public class WorkflowTest {
     /**
      *  This test adds a petition to the workflow
      *  Test fails if not successfully dded to queue
+     *  @author Scott Roszel
      */
     @Test
     public void testAddToReviewQueueReturn() {
@@ -61,6 +63,7 @@ public class WorkflowTest {
     /**
      *  This test stores the size before and after adding object to queue.
      *  Test fails if the new queue size does not equal the old queue size plus one.
+     *  @author Scott Roszel
      */
     @Test
     public void testAddToApprovalQueueIncrement() {
@@ -80,19 +83,21 @@ public class WorkflowTest {
     /**
      *  This test adds a petition to the workflow
      *  Test fails if not successfully dded to queue
+     *  @author Scott Roszel
      */
     @Test
     public void testAddToApprovalQueueReturn() {
         // get queue return value
         int result = workflow.addToApprovalQueue(newPetition.getaNumber());
 
-        // check funstion return value
+        // check function return value
         assertEquals(1, result);
     }
 
     /**
      *  This test adds a new petition to queue.
      *  Test fails if return from removal function is false.
+     *  @author Scott Roszel
      */
     @Test
     public void testRemoveFromReviewQueueReturnNotNull() {
@@ -109,6 +114,7 @@ public class WorkflowTest {
     /**
      *  This test adds a new petition to queue.
      *  Test fails if returned type in not a petition object.
+     *  @author Scott Roszel
      */
     @Test
     public void testRemoveFromReviewQueueReturnResult() {
@@ -119,7 +125,7 @@ public class WorkflowTest {
         String returnResult = workflow.removeFromReviewQueue();
 
         // check if returned object is a petition
-        assertEquals(newPetition, returnResult);
+        assertEquals(newPetition.getaNumber(), returnResult);
     }
 
     /**
@@ -129,6 +135,7 @@ public class WorkflowTest {
      *  It stores the new size after attempting to remove object from queue.
      *  Test fails if new size does not equal old size minus 1.
      *  **Will not work until after add to queue function is complete**
+     *  @author Scott Roszel
      */
     @Test
     public void testRemoveFromReviewQueueDecrement() {
@@ -151,6 +158,7 @@ public class WorkflowTest {
     /**
      *  This test adds a new petition to queue.
      *  Test fails if return from removal function is false.
+     *  @author Scott Roszel
      */
     @Test
     public void testRemoveFromApprovalQueueReturnNotNull() {
@@ -167,6 +175,7 @@ public class WorkflowTest {
     /**
      *  This test adds a new petition to queue.
      *  Test fails if returned type in not a petition object.
+     *  @author Scott Roszel
      */
     @Test
     public void testRemoveFromApprovalQueueReturnResult() {
@@ -177,7 +186,7 @@ public class WorkflowTest {
         String returnResult = workflow.removeFromApprovalQueue();
 
         // check if returned type is cs321.Petition object
-        assertEquals(newPetition, returnResult);
+        assertEquals(newPetition.getaNumber(), returnResult);
     }
 
     /**
@@ -187,6 +196,7 @@ public class WorkflowTest {
      *  It stores the new size after attempting to remove object from queue.
      *  Test fails if new size does not equal old size minus 1.
      *  **Will not work until after add to queue function is complete**
+     *  @author Scott Roszel
      */
     @Test
     public void testRemoveFromApprovalQueueDecrement() {
@@ -209,6 +219,7 @@ public class WorkflowTest {
     /**
      *  This test checks the return type.
      *  Test fails if returned type is null.
+     *  @author Scott Roszel
      */
     @Test
     public void testGetReviewQueueNotNull() {
@@ -222,6 +233,7 @@ public class WorkflowTest {
     /**
      *  This test checks the return type.
      *  Test fails if returned type is null.
+     *  @author Scott Roszel
      */
     @Test
     public void testGetApprovalQueueNotNull() {

@@ -27,8 +27,12 @@ public class Workflow {
      * @return returns 1 if added successfully, 0 if not
      */
     public int addToReviewQueue(String aNumber) {
+        if (aNumber == null) {
+            return 0;
+        }
+
         reviewQueue.add(aNumber);
-        return 0;
+        return 1;
     }
 
     /**
@@ -38,8 +42,12 @@ public class Workflow {
      * @return returns 1 if added successfully, 0 if not
      */
     public int addToApprovalQueue(String aNumber) {
+        if (aNumber == null) {
+            return 0;
+        }
+
         approvalQueue.add(aNumber);
-        return 0;
+        return 1;
     }
 
     /**

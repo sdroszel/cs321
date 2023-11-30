@@ -28,6 +28,7 @@ public class PNWTest {
     /**
      * This test checks the return value for ValidateEntry()
      * if the data entered in correct.
+     * @author Scott Roszel
      */
     @Test
     public void testValidateEntryCorrectData() {
@@ -44,12 +45,13 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertNull(result);
     }
 
     /**
      * This test checks the return value for ValidateEntry()
      * if the 29th of February is out of range for a non leap year.
+     * @author Scott Roszel
      */
     @Test
     public void testValidateEntryDayOutOfRangeNonLeapYear() {
@@ -72,6 +74,7 @@ public class PNWTest {
     /**
      * This test checks the return value for ValidateEntry()
      * if the 29th in February is in range for a leap year.
+     * @author Scott Roszel
      */
     @Test
     public void testValidateEntryDayInRangeLeapYear() {
@@ -94,6 +97,7 @@ public class PNWTest {
     /**
      * This test checks the return value for ValidateEntry()
      * if a string entry is empty.
+     * @author Scott Roszel
      */
     @Test
     public void testValidateEntryMissingName() {
@@ -110,12 +114,13 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Beneficiary First Name", result);
     }
 
     /**
      * This test checks the return value for ValidateEntry()
      * if the month is out of range.
+     * @author Scott Roszel
      */
     @Test
     public void testValidateEntryMonthOutOfRange() {
@@ -132,7 +137,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     @Test
@@ -150,7 +155,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
 
     }
 
@@ -169,7 +174,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     @Test
@@ -188,7 +193,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     @Test
@@ -207,7 +212,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     @Test
@@ -226,7 +231,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     @Test
@@ -244,7 +249,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
     @Test
@@ -262,7 +267,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Date of Birth", result);
     }
 
 
@@ -281,7 +286,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals("", result);
+        assertEquals("Invalid Petitioner Last Name. Can only contain alphabetic characters.", result);
     }
 
     @Test
