@@ -16,6 +16,9 @@ public class PNWTest {
     Petition petition;
     Database database;
 
+    /**
+     * This is run before each test
+     */
     @Before
     public void create() {
         pnw = new PNW();
