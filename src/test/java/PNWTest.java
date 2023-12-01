@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * This is a test class for the cs321.PNW object.
  *
- * @author Scott Roszel & Victor Londono
+ * @author Scott Roszel,Victor Londono & Rashida Mohamed
  */
 public class PNWTest {
     PNW pnw;
@@ -593,4 +593,715 @@ public class PNWTest {
 
         assertTrue(result);
     }
+
+     
+    /************************************
+	 * UNIT TESTS FOR getWorkflow Method *
+	 ************************************/
+	
+	
+	/**
+	* The following tests checks if the workflow object called by 
+	* the getWorkflow method is not NULL
+	*/
+	
+	@Test
+	public void testWorkflowobjectNotNull(){
+	      
+		  
+	   PNW pnw_obj = new PNW();
+	   
+	   Workflow workflow_obj = pnw_obj.getWorkflow();
+	   
+	   
+	   assertNotNull("Workflow object has been initialized",workflow_obj);
+	   
+	}
+	
+	
+	/** TestANumbersinReview1 verifies that the reviewQueue in workflow class contains all valid a-Numbers
+	*  that was added from addToWorkflow method through using the getWorkflow method 
+	*/
+	
+	@Test
+	public void testANumbersinReview1(){
+		
+		
+		/*contains list of valid a-Numbers that was added*/
+		
+		String [] aNumbers = {"001","002","003"};
+		
+		int count = 0;
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("John");
+        petition1.setBeneficiaryLastName("Doe");
+        petition1.setANumber("001");
+        petition1.setPetitionerFirstName("Jane");
+        petition1.setPetitionerLastName("Doe");
+        petition1.setDobMonth(5);
+        petition1.setDobDay(16);
+        petition1.setDobYear(1989);
+		
+		Petition petition2 = new Petition();
+
+        petition2.setBeneficiaryFirstName("Mike");
+        petition2.setBeneficiaryLastName("Sanders");
+        petition2.setANumber("002");
+        petition2.setPetitionerFirstName("Tom");
+        petition2.setPetitionerLastName("Jones");
+        petition2.setDobMonth(2);
+        petition2.setDobDay(8);
+        petition2.setDobYear(1993);
+	
+		
+		
+		
+		Petition petition3 = new Petition();
+
+        petition3.setBeneficiaryFirstName("Suzie");
+        petition3.setBeneficiaryLastName("Green");
+        petition3.setANumber("003");
+        petition3.setPetitionerFirstName("Bianca");
+        petition3.setPetitionerLastName("Jones");
+        petition3.setDobMonth(6);
+        petition3.setDobDay(7);
+        petition3.setDobYear(1995);
+		
+		
+	    pnw_obj.validateEntry(petition1);
+		
+		pnw_obj.validateEntry(petition2);
+		
+		pnw_obj.validateEntry(petition3);
+	
+		Workflow workflow_obj = pnw_obj.getWorkflow();
+		
+	    for(int i = 0; i < aNumbers.length; i++){
+		
+		     if(aNumbers[i] == workflow_obj.removeFromReviewQueue()){
+				 
+				count++;
+				 
+			 }
+	    }
+		
+	 
+	    assertEquals(3,count);
+		
+	}
+	
+	
+	/** TestANumbersinReview2 verifies that the reviewQueue in workflow class contains all valid a-Numbers
+	* that was added from addToWorkflow method through using the getWorkflow method 
+	*/
+	
+	@Test
+	public void testANumbersinReview2(){
+		
+		
+		
+		String [] aNumbers = {"004","005","006"};
+		
+		int count = 0;
+		
+		
+		PNW pnw_obj2 = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("Sarah");
+        petition1.setBeneficiaryLastName("Wayne");
+        petition1.setANumber("004");
+        petition1.setPetitionerFirstName("Janet");
+        petition1.setPetitionerLastName("Niles");
+        petition1.setDobMonth(5);
+        petition1.setDobDay(16);
+        petition1.setDobYear(1989);
+		
+		Petition petition2 = new Petition();
+
+        petition2.setBeneficiaryFirstName("Marco");
+        petition2.setBeneficiaryLastName("Brown");
+        petition2.setANumber("005");
+        petition2.setPetitionerFirstName("Thomas");
+        petition2.setPetitionerLastName("Callahan");
+        petition2.setDobMonth(2);
+        petition2.setDobDay(8);
+        petition2.setDobYear(1993);
+	
+		
+		Petition petition3 = new Petition();
+
+        petition3.setBeneficiaryFirstName("Suzie");
+        petition3.setBeneficiaryLastName("Green");
+        petition3.setANumber("006");
+        petition3.setPetitionerFirstName("Bianca");
+        petition3.setPetitionerLastName("Jones");
+        petition3.setDobMonth(6);
+        petition3.setDobDay(7);
+        petition3.setDobYear(1995);
+		
+		
+	    pnw_obj2.validateEntry(petition1);
+		
+		pnw_obj2.validateEntry(petition2);
+		
+		pnw_obj2.validateEntry(petition3);
+	
+	
+		
+		
+		Workflow workflow_obj2 = pnw_obj2.getWorkflow();
+		
+		
+	    for(int i = 0; i < aNumbers.length; i++){
+		
+		     if(aNumbers[i].equals(workflow_obj2.removeFromReviewQueue())){
+				 
+				count++;
+				 
+			 }
+	    }
+		
+	 
+	    assertEquals(3,count);
+		
+		
+	}
+	
+	
+	
+	/** TestANumbersinApproval1 verifies that the  Approval Queue in workflow class contains all valid a-Numbers
+	*  that was added from addToWorkflow method through using the getWorkflow method 
+	*/
+	@Test
+	public void testANumbersinApproval1(){
+		System.out.println("testANumbersinApproval1 passed!");
+		
+		
+		String [] aNumbers = {"001","002","003"};
+		
+		int count = 0;
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("John");
+        petition1.setBeneficiaryLastName("Doe");
+        petition1.setANumber("001");
+        petition1.setPetitionerFirstName("Jane");
+        petition1.setPetitionerLastName("Doe");
+        petition1.setDobMonth(5);
+        petition1.setDobDay(16);
+        petition1.setDobYear(1989);
+		petition1.setWorkflowStatus(1);
+		
+		Petition petition2 = new Petition();
+
+        petition2.setBeneficiaryFirstName("Mike");
+        petition2.setBeneficiaryLastName("Sanders");
+        petition2.setANumber("002");
+        petition2.setPetitionerFirstName("Tom");
+        petition2.setPetitionerLastName("Jones");
+        petition2.setDobMonth(2);
+        petition2.setDobDay(8);
+        petition2.setDobYear(1993);
+		petition2.setWorkflowStatus(1);
+	
+		
+		
+		
+		Petition petition3 = new Petition();
+
+        petition3.setBeneficiaryFirstName("Suzie");
+        petition3.setBeneficiaryLastName("Green");
+        petition3.setANumber("003");
+        petition3.setPetitionerFirstName("Bianca");
+        petition3.setPetitionerLastName("Jones");
+        petition3.setDobMonth(6);
+        petition3.setDobDay(7);
+        petition3.setDobYear(1995);
+		petition3.setWorkflowStatus(1);
+		
+		
+		pnw_obj.validateEntry(petition1);
+		
+		pnw_obj.validateEntry(petition2);
+		
+		pnw_obj.validateEntry(petition3);
+	
+		
+		
+		
+		Workflow workflow_obj = pnw_obj.getWorkflow();
+		
+		
+	    for(int i = 0; i < aNumbers.length; i++){
+		
+		     if(aNumbers[i] == workflow_obj.removeFromApprovalQueue()){
+				 
+				count++;
+				 
+			 }
+	    }
+		
+	 
+	    assertEquals(3,count);
+		
+		
+	}
+	
+	
+	
+	/** TestANumbersinApproval2 verifies that the  Approval Queue in workflow class contains all valid a-Numbers
+	*  that was added from addToWorkflow method through using the getWorkflow method 
+	*/
+	@Test
+	public void testANumbersinApproval2(){
+		
+		
+		String [] aNumbers = {"004","005","006"};
+		
+		int count = 0;
+		
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("Sarah");
+        petition1.setBeneficiaryLastName("Wayne");
+        petition1.setANumber("004");
+        petition1.setPetitionerFirstName("Janet");
+        petition1.setPetitionerLastName("Niles");
+        petition1.setDobMonth(5);
+        petition1.setDobDay(16);
+        petition1.setDobYear(1989);
+		petition1.setWorkflowStatus(1);
+		
+		Petition petition2 = new Petition();
+
+        petition2.setBeneficiaryFirstName("Marco");
+        petition2.setBeneficiaryLastName("Brown");
+        petition2.setANumber("005");
+        petition2.setPetitionerFirstName("Thomas");
+        petition2.setPetitionerLastName("Callahan");
+        petition2.setDobMonth(2);
+        petition2.setDobDay(8);
+        petition2.setDobYear(1993);
+		petition2.setWorkflowStatus(1);
+	
+		
+		Petition petition3 = new Petition();
+
+        petition3.setBeneficiaryFirstName("Suzie");
+        petition3.setBeneficiaryLastName("Green");
+        petition3.setANumber("006");
+        petition3.setPetitionerFirstName("Bianca");
+        petition3.setPetitionerLastName("Jones");
+        petition3.setDobMonth(6);
+        petition3.setDobDay(7);
+        petition3.setDobYear(1995);
+		petition3.setWorkflowStatus(1);
+		
+		
+		pnw_obj.validateEntry(petition1);
+		
+		pnw_obj.validateEntry(petition2);
+		
+		pnw_obj.validateEntry(petition3);
+	
+
+		
+		
+		Workflow workflow_obj = pnw_obj.getWorkflow();
+		
+		
+	    for(int i = 0; i < aNumbers.length; i++){
+		
+		     if(aNumbers[i] == workflow_obj.removeFromApprovalQueue()){
+				 
+				count++;
+				 
+			 }
+	    }
+		
+	 
+	    assertEquals(3,count);
+		
+		
+	}
+	
+	
+	/** The following tests if the getWorkflow method can be used to obtain all data associated with current petition 
+	*  that needs review from the database
+	*/
+	@Test
+	public void testgetNextWFReviewQueue1(){
+		
+		
+		int count = 0;
+		
+		String [] petitionData = {"John","Doe","Jane","Doe","5","16","1989"};
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("John");
+        petition1.setBeneficiaryLastName("Doe");
+        petition1.setANumber("001");
+        petition1.setPetitionerFirstName("Jane");
+        petition1.setPetitionerLastName("Doe");
+        petition1.setDobMonth(5);
+        petition1.setDobDay(16);
+        petition1.setDobYear(1989);
+		
+	
+		pnw_obj.validateEntry(petition1);
+		
+	   
+		
+		//following variable stores the current aNumber from the review queue, using the getWorkflow method
+		
+		String currentData = pnw_obj.getWorkflow().removeFromReviewQueue();
+		
+		
+		
+		Petition currentPetition = pnw_obj.getPetitionFromDatabase(currentData);
+		
+		
+		if(currentPetition.getBeneficiaryFirstName().equals(petitionData[0])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getBeneficiaryLastName().equals(petitionData[1])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getPetitionerFirstName().equals(petitionData[2])){
+			
+			count = count+1;
+		}
+	   
+	   
+	    if(currentPetition.getPetitionerLastName().equals(petitionData[3])){
+			
+			count = count+1;
+			
+		}
+		
+		
+		
+		if(currentPetition.getDobMonth().equals(petitionData[4])){
+			
+			count = count+1;
+		}
+		
+		
+		
+		if(currentPetition.getDobDay().equals(petitionData[5])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getDobYear().equals(petitionData[6])){
+			
+			count = count+1;
+		}
+		
+		
+	   
+		assertEquals(7,count);
+		
+	
+	
+	}
+	
+	
+	/** The following tests if the getWorkflow method can be used to obtain all data associated with current petition 
+	*  that needs review from the database
+	*/
+	@Test
+	public void testgetNextWFReviewQueue2(){
+		
+		
+		int count = 0;
+		
+		String [] petitionData = {"Sarah","Wayne","Janet","Niles","6","9","2000"};
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("Sarah");
+        petition1.setBeneficiaryLastName("Wayne");
+        petition1.setANumber("004");
+        petition1.setPetitionerFirstName("Janet");
+        petition1.setPetitionerLastName("Niles");
+        petition1.setDobMonth(6);
+        petition1.setDobDay(9);
+        petition1.setDobYear(2000);
+		
+		
+		pnw_obj.validateEntry(petition1);
+		
+
+		//following variable stores the current aNumber from the review queue, using the getWorkflow method
+		
+		String currentData = pnw_obj.getWorkflow().removeFromReviewQueue();
+		
+		
+		
+		Petition currentPetition = pnw_obj.getPetitionFromDatabase(currentData);
+		
+		
+		if(currentPetition.getBeneficiaryFirstName().equals(petitionData[0])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getBeneficiaryLastName().equals(petitionData[1])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getPetitionerFirstName().equals(petitionData[2])){
+			
+			count = count+1;
+		}
+	   
+	   
+	    if(currentPetition.getPetitionerLastName().equals(petitionData[3])){
+			
+			count = count+1;
+			
+		}
+		
+		
+		
+		if(currentPetition.getDobMonth().equals(petitionData[4])){
+			
+			count = count+1;
+		}
+		
+		
+		
+		if(currentPetition.getDobDay().equals(petitionData[5])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getDobYear().equals(petitionData[6])){
+			
+			count = count+1;
+		}
+		
+		
+	   
+		assertEquals(7,count);
+		
+		
+		
+		
+			
+	}
+	
+	
+	/** The following tests if the getWorkflow method can be used to obtain all data associated with current petition 
+	*  that needs Approval from the database
+	*/
+	@Test
+	public void testgetNextWFApprovalQueue1(){
+		
+		int count = 0;
+		
+		String [] petitionData = {"John","Doe","Jane","Doe","5","16","1989"};
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("John");
+        petition1.setBeneficiaryLastName("Doe");
+        petition1.setANumber("001");
+        petition1.setPetitionerFirstName("Jane");
+        petition1.setPetitionerLastName("Doe");
+        petition1.setDobMonth(5);
+        petition1.setDobDay(16);
+        petition1.setDobYear(1989);
+		petition1.setWorkflowStatus(1);
+		
+		
+		pnw_obj.validateEntry(petition1);
+		
+	
+		
+		
+		//following variable stores the current aNumber from the review queue, using the getWorkflow method
+		
+		String currentData = pnw_obj.getWorkflow().removeFromApprovalQueue();
+		
+		
+		
+		Petition currentPetition = pnw_obj.getPetitionFromDatabase(currentData);
+		
+		
+		if(currentPetition.getBeneficiaryFirstName().equals(petitionData[0])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getBeneficiaryLastName().equals(petitionData[1])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getPetitionerFirstName().equals(petitionData[2])){
+			
+			count = count+1;
+		}
+	   
+	   
+	    if(currentPetition.getPetitionerLastName().equals(petitionData[3])){
+			
+			count = count+1;
+			
+		}
+		
+		
+		if(currentPetition.getDobMonth().equals(petitionData[4])){
+			
+			count = count+1;
+		}
+		
+	
+		if(currentPetition.getDobDay().equals(petitionData[5])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getDobYear().equals(petitionData[6])){
+			
+			count = count+1;
+		}
+		
+		
+	   
+		assertEquals(7,count);
+		
+		
+		
+	}
+	
+	
+	/** The following tests if the getWorkflow method can be used to obtain all data associated with current petition 
+	*  that needs Approval from the database
+	*/
+	
+	@Test
+	public void testgetNextWFpprovalQueue2(){
+		
+		
+		int count = 0;
+		
+		String [] petitionData = {"Sarah","Wayne","Janet","Niles","6","9","2000"};
+		
+		PNW pnw_obj = new PNW();
+		
+		Petition petition1 = new Petition();
+
+        petition1.setBeneficiaryFirstName("Sarah");
+        petition1.setBeneficiaryLastName("Wayne");
+        petition1.setANumber("004");
+        petition1.setPetitionerFirstName("Janet");
+        petition1.setPetitionerLastName("Niles");
+        petition1.setDobMonth(6);
+        petition1.setDobDay(9);
+        petition1.setDobYear(2000);
+		petition1.setWorkflowStatus(1);
+		
+		pnw_obj.validateEntry(petition1);
+		
+
+		
+		//following variable stores the current aNumber from the review queue, using the getWorkflow method
+		
+		String currentData = pnw_obj.getWorkflow().removeFromApprovalQueue();
+		
+		
+		
+		Petition currentPetition = pnw_obj.getPetitionFromDatabase(currentData);
+		
+		
+		if(currentPetition.getBeneficiaryFirstName().equals(petitionData[0])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getBeneficiaryLastName().equals(petitionData[1])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getPetitionerFirstName().equals(petitionData[2])){
+			
+			count = count+1;
+		}
+	   
+	   
+	    if(currentPetition.getPetitionerLastName().equals(petitionData[3])){
+			
+			count = count+1;
+			
+		}
+		
+		
+		
+		if(currentPetition.getDobMonth().equals(petitionData[4])){
+			
+			count = count+1;
+		}
+		
+		
+		
+		if(currentPetition.getDobDay().equals(petitionData[5])){
+			
+			count = count+1;
+		}
+		
+		
+		if(currentPetition.getDobYear().equals(petitionData[6])){
+			
+			count = count+1;
+		}
+		
+		
+	   
+		assertEquals(7,count);
+		
+		
+	}
+	
+	
+	
+	
 }
