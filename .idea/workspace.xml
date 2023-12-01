@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/PNW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/PNW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cs/project/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs/project/Workflow.java" afterDir="false" />
-    </list>
+    <list default="true" id="728e23f9-d860-4c9f-8261-cfb97c0e8a0a" name="Default Changelist" comment="Merge branch 'vic'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -330,7 +325,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.WorkflowTest">
     <configuration name="DataEntryScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs.project.DataEntryScreen" />
       <module name="cs321" />
@@ -357,8 +352,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PNWTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cs321" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PNWTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PNWTest.testValidateEntryStringContainsNonAlphabetic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cs321" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PNWTest" />
+      <option name="METHOD_NAME" value="testValidateEntryStringContainsNonAlphabetic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorkflowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cs321" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="WorkflowTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WorkflowTest" />
+        <item itemvalue="JUnit.PNWTest" />
+        <item itemvalue="JUnit.PNWTest.testValidateEntryStringContainsNonAlphabetic" />
         <item itemvalue="Application.DataEntryScreen" />
         <item itemvalue="Application.HelloApplication" />
       </list>
@@ -444,16 +470,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-<<<<<<< Updated upstream
-          <url>file://$PROJECT_DIR$/src/main/java/cs/project/ReviewScreen.java</url>
-          <line>647</line>
-          <option name="timeStamp" value="2" />
-=======
-          <url>file://$PROJECT_DIR$/src/main/java/cs/project/PNW.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cs/project/Test.java</url>
           <line>39</line>
           <option name="timeStamp" value="5" />
@@ -462,10 +478,13 @@
           <url>file://$PROJECT_DIR$/src/main/java/cs/project/DataEntryScreen.java</url>
           <line>59</line>
           <option name="timeStamp" value="11" />
->>>>>>> Stashed changes
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cs321$PNWTest.ic" NAME="PNWTest Coverage Results" MODIFIED="1701388404981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/cs321$WorkflowTest.ic" NAME="WorkflowTest Coverage Results" MODIFIED="1701388888067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/WorkflowTest.java">

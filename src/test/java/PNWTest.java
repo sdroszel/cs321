@@ -1,12 +1,10 @@
-
-
-import static org.junit.Assert.*;
-
 import cs.project.Database;
 import cs.project.PNW;
 import cs.project.Petition;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * This is a test class for the cs321.PNW object.
@@ -46,6 +44,44 @@ public class PNWTest {
         String result = pnw.validateEntry(petition);
 
         assertNull(result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testAnumberNullOrEmpty() {
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid A-Number", result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testCheckIfStringContainsOnlyDigitsInvalidAnumber() {
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("a001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid A-Number. Can only contain numbers.", result);
     }
 
     /**
@@ -91,7 +127,7 @@ public class PNWTest {
 
         String result = pnw.validateEntry(petition);
 
-        assertEquals(null, result);
+        assertNull(result);
     }
 
     /**
@@ -187,6 +223,69 @@ public class PNWTest {
     }
 
     /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testValidateEntryPetitionerFirstNameNonAlphabetic() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jan3");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Petitioner First Name. Can only contain alphabetic characters.", result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testValidateEntryBeneficiaryFirstNameNonAlphabetic() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("J0hn");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Beneficiary First Name. Can only contain alphabetic characters.", result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testValidateEntryBeneficiaryLastNameNonAlphabetic() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("D0e");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(5);
+        petition.setDobDay(16);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Beneficiary Last Name. Can only contain alphabetic characters.", result);
+    }
+
+    /**
      * This test checks the return value for ValidateEntry()
      * if the month is out of range.
      * @author Scott Roszel
@@ -209,6 +308,9 @@ public class PNWTest {
         assertEquals("Invalid Date of Birth", result);
     }
 
+    /**
+     * @author Scott Roszel
+     */
     @Test
     public void testValidateEntryDayOutOfRangeOddMonth() {
         petition = new Petition();
@@ -226,6 +328,109 @@ public class PNWTest {
 
         assertEquals("Invalid Date of Birth", result);
 
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testCheckDatabaseValidEntry() {
+        Petition p1 = new Petition();
+        Petition p2 = new Petition();
+        Petition p3 = new Petition();
+
+        p1.setANumber("001");
+        p2.setANumber("002");
+        p3.setANumber("003");
+
+        pnw.getDatabase().add(p1);
+        pnw.getDatabase().add(p2);
+        pnw.getDatabase().add(p3);
+
+        Boolean result = pnw.checkDatabase("003");
+
+        assertTrue(result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testCheckDatabaseInvalidEntry() {
+        Petition p1 = new Petition();
+        Petition p2 = new Petition();
+        Petition p3 = new Petition();
+
+        p1.setANumber("001");
+        p2.setANumber("002");
+        p3.setANumber("003");
+
+        pnw.getDatabase().add(p1);
+        pnw.getDatabase().add(p2);
+        pnw.getDatabase().add(p3);
+
+        Boolean result = pnw.checkDatabase("005");
+
+        assertFalse(result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testCheckDatabaseEmptyDatabase() {
+
+        Boolean result = pnw.checkDatabase("003");
+
+        assertFalse(result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testGetPetitionFromDatabaseDNE() {
+        Petition p1 = new Petition();
+        Petition p2 = new Petition();
+        Petition p3 = new Petition();
+
+        p1.setANumber("001");
+        p2.setANumber("002");
+        p3.setANumber("003");
+
+        pnw.getDatabase().add(p1);
+        pnw.getDatabase().add(p2);
+        pnw.getDatabase().add(p3);
+
+        Petition result = pnw.getPetitionFromDatabase("004");
+
+        assertNull(result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testAddToWorkflowApproval() {
+        petition.setANumber("001");
+        petition.setWorkflowStatus(1);
+
+        Boolean result = pnw.addToWorkflow(petition);
+
+        assertTrue(result);
+    }
+
+    /**
+     * @author Scott Roszel
+     */
+    @Test
+    public void testAddToWorkflowFail() {
+        petition.setANumber("001");
+        petition.setWorkflowStatus(2);
+
+        Boolean result = pnw.addToWorkflow(petition);
+
+        assertFalse(result);
     }
 
     @Test

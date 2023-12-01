@@ -71,12 +71,7 @@ public class PNW {
 
 
         // if valid, add to database and workflow
-        for (Petition p: databaseList) {
-            if (p.getaNumber().equals(petition.getaNumber())) {
-                checkDB = true;
-                break;
-            }
-        }
+        checkDB = checkDatabase(petition.getaNumber());
 
         if (!checkDB) {
             database.addToDatabase(petition);

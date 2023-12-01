@@ -1,12 +1,12 @@
-
-import static org.junit.Assert.*;
-
 import cs.project.Petition;
 import cs.project.Workflow;
-import org.junit.*;
-
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Queue;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * This is a test class for the cs321.Workflow object.
@@ -24,6 +24,15 @@ public class WorkflowTest {
     public void createObjectsForTests() {
         workflow = new Workflow();
         newPetition = new Petition();
+
+        newPetition.setBeneficiaryFirstName("John");
+        newPetition.setBeneficiaryLastName("Doe");
+        newPetition.setANumber("001");
+        newPetition.setPetitionerFirstName("Jane");
+        newPetition.setPetitionerLastName("Doe");
+        newPetition.setDobMonth(5);
+        newPetition.setDobDay(16);
+        newPetition.setDobYear(1989);
     }
 
     /**
@@ -47,20 +56,6 @@ public class WorkflowTest {
     }
 
     /**
-     *  This test adds a petition to the workflow
-     *  Test fails if not successfully dded to queue
-     *  @author Scott Roszel
-     */
-    @Test
-    public void testAddToReviewQueueReturn() {
-        // get function return value
-        int result = workflow.addToReviewQueue(newPetition.getaNumber());
-
-        // check return value
-        assertEquals(1, result);
-    }
-
-    /**
      *  This test stores the size before and after adding object to queue.
      *  Test fails if the new queue size does not equal the old queue size plus one.
      *  @author Scott Roszel
@@ -78,20 +73,6 @@ public class WorkflowTest {
 
         // check if queue size incremented by 1
         assertEquals(currentSize + 1, newSize);
-    }
-
-    /**
-     *  This test adds a petition to the workflow
-     *  Test fails if not successfully dded to queue
-     *  @author Scott Roszel
-     */
-    @Test
-    public void testAddToApprovalQueueReturn() {
-        // get queue return value
-        int result = workflow.addToApprovalQueue(newPetition.getaNumber());
-
-        // check function return value
-        assertEquals(1, result);
     }
 
     /**

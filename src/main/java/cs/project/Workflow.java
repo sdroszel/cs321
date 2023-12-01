@@ -24,30 +24,18 @@ public class Workflow {
      * The function adds a petition to the workflow review queue
      *
      * @param aNumber Holds the petition to add
-     * @return returns 1 if added successfully, 0 if not
      */
-    public int addToReviewQueue(String aNumber) {
-        if (aNumber == null) {
-            return 0;
-        }
-
+    public void addToReviewQueue(String aNumber) {
         reviewQueue.add(aNumber);
-        return 1;
     }
 
     /**
      * The function adds a petition to the workflow approval queue
      *
      * @param aNumber Holds the petition to add
-     * @return returns 1 if added successfully, 0 if not
      */
-    public int addToApprovalQueue(String aNumber) {
-        if (aNumber == null) {
-            return 0;
-        }
-
+    public void addToApprovalQueue(String aNumber) {
         approvalQueue.add(aNumber);
-        return 1;
     }
 
     /**
