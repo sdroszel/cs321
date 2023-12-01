@@ -47,6 +47,7 @@ public class PNWTest {
     }
 
     /**
+     * This test checks if the a-number is empty or null
      * @author Scott Roszel
      */
     @Test
@@ -66,6 +67,7 @@ public class PNWTest {
     }
 
     /**
+     * This test checks if the a-number contains non-digits
      * @author Scott Roszel
      */
     @Test
@@ -223,6 +225,7 @@ public class PNWTest {
     }
 
     /**
+     * This test checks the petitioner first name for non-alphabetic characters
      * @author Scott Roszel
      */
     @Test
@@ -244,6 +247,7 @@ public class PNWTest {
     }
 
     /**
+     * This test checks the beneficiary's first name for non-alphabetic characters
      * @author Scott Roszel
      */
     @Test
@@ -265,6 +269,7 @@ public class PNWTest {
     }
 
     /**
+     * This test checks if the beneficiary's last name for non-alphabetic characters
      * @author Scott Roszel
      */
     @Test
@@ -309,28 +314,7 @@ public class PNWTest {
     }
 
     /**
-     * @author Scott Roszel
-     */
-    @Test
-    public void testValidateEntryDayOutOfRangeOddMonth() {
-        petition = new Petition();
-
-        petition.setBeneficiaryFirstName("John");
-        petition.setBeneficiaryLastName("Doe");
-        petition.setANumber("001");
-        petition.setPetitionerFirstName("Jane");
-        petition.setPetitionerLastName("Doe");
-        petition.setDobMonth(11);
-        petition.setDobDay(40);
-        petition.setDobYear(1989);
-
-        String result = pnw.validateEntry(petition);
-
-        assertEquals("Invalid Date of Birth", result);
-
-    }
-
-    /**
+     * This tests the check database function with a valid a-number
      * @author Scott Roszel
      */
     @Test
@@ -353,6 +337,7 @@ public class PNWTest {
     }
 
     /**
+     * This tests the check database function with invalid entry
      * @author Scott Roszel
      */
     @Test
@@ -375,6 +360,7 @@ public class PNWTest {
     }
 
     /**
+     * This tests the check database function while it is empty
      * @author Scott Roszel
      */
     @Test
@@ -386,6 +372,8 @@ public class PNWTest {
     }
 
     /**
+     * This tests the get petition from database function with
+     * an a-number that does not exist
      * @author Scott Roszel
      */
     @Test
@@ -408,6 +396,7 @@ public class PNWTest {
     }
 
     /**
+     * This test adds to the approval workflow
      * @author Scott Roszel
      */
     @Test
@@ -421,6 +410,7 @@ public class PNWTest {
     }
 
     /**
+     * This test tries to add to a workflow that does not exist
      * @author Scott Roszel
      */
     @Test
@@ -431,6 +421,25 @@ public class PNWTest {
         Boolean result = pnw.addToWorkflow(petition);
 
         assertFalse(result);
+    }
+
+    @Test
+    public void testValidateEntryDayOutOfRangeOddMonth() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(11);
+        petition.setDobDay(40);
+        petition.setDobYear(1989);
+
+        String result = pnw.validateEntry(petition);
+
+        assertEquals("Invalid Date of Birth", result);
+
     }
 
     @Test

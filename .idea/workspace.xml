@@ -325,7 +325,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.WorkflowTest">
+  <component name="RunManager" selected="JUnit.PNWTest">
     <configuration name="DataEntryScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs.project.DataEntryScreen" />
       <module name="cs321" />
@@ -382,8 +382,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WorkflowTest" />
         <item itemvalue="JUnit.PNWTest" />
+        <item itemvalue="JUnit.WorkflowTest" />
         <item itemvalue="JUnit.PNWTest.testValidateEntryStringContainsNonAlphabetic" />
         <item itemvalue="Application.DataEntryScreen" />
         <item itemvalue="Application.HelloApplication" />
@@ -483,7 +483,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cs321$PNWTest.ic" NAME="PNWTest Coverage Results" MODIFIED="1701388404981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/cs321$PNWTest.ic" NAME="PNWTest Coverage Results" MODIFIED="1701389401983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/cs321$WorkflowTest.ic" NAME="WorkflowTest Coverage Results" MODIFIED="1701388888067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
