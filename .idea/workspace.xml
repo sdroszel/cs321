@@ -325,9 +325,9 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PNWTest">
-    <configuration name="DataEntryScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cs.project.DataEntryScreen" />
+  <component name="RunManager" selected="Application.MenuScreen">
+    <configuration name="MenuScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cs.project.MenuScreen" />
       <module name="cs321" />
       <extension name="coverage">
         <pattern>
@@ -379,11 +379,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MenuScreen" />
         <item itemvalue="JUnit.PNWTest" />
         <item itemvalue="JUnit.WorkflowTest" />
         <item itemvalue="JUnit.PNWTest.testValidateEntryCorrectData" />
         <item itemvalue="JUnit.PNWTest.testValidateEntryStringContainsNonAlphabetic" />
-        <item itemvalue="Application.DataEntryScreen" />
       </list>
     </recent_temporary>
   </component>
@@ -472,9 +472,19 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cs/project/DataEntryScreen.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/cs/project/PNW.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cs/project/ApprovalScreen.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cs/project/ReviewScreen.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

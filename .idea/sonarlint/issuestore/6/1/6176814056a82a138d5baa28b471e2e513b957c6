@@ -1,0 +1,16 @@
+
+J
+java:S1066"/Merge this if statement with the enclosing one.(í§´ııÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“¸ûº
+f	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í’Ÿ‹
+k	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ºÀ¬ÿÿÿÿÿ
+k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÅçşÿÿÿÿ
+k	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹Ô†ûÿÿÿÿ
+f	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò˜ÌØ
+f	java:S117h"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆµÒ¬
+l	java:S116	"RRename this field "pnw_obj" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘¯­Úùÿÿÿÿ
+E	java:S106;"+Replace this use of System.out by a logger.(ËÉ€’ıÿÿÿÿ
+@	java:S106K"+Replace this use of System.out by a logger.(ùŞ÷µ
+E	java:S106["+Replace this use of System.out by a logger.(İ®§ãúÿÿÿÿ
+h	java:S100u"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®Û¯¬ùÿÿÿÿ
+V	java:S125w"<This block of commented-out lines of code should be removed.(ÏÚºªúÿÿÿÿ

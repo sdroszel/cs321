@@ -84,7 +84,13 @@ public class ApprovalScreen extends Application {
         });
         rejectButton.setDisable(true);
 
+
         Button getNextButton = new Button("Load Petition");
+
+        if (businessObject.getWorkflow().getApprovalQueue().isEmpty()) {
+            getNextButton.setDisable(true);
+        }
+
         getNextButton.setOnAction(e -> {
             petition = businessObject.getPetitionFromDatabase(workflow.removeFromApprovalQueue());
 
